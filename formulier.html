@@ -563,8 +563,16 @@
     <div class="card-body">
       <div style="display:flex;flex-direction:column;gap:12px">
 
+        <label id="type-fiets" onclick="selectBoeteType('fiets')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:64px;height:64px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Fietsdepot (gemeente)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Je fiets is weggehaald en je denkt dat de gemeente dat niet zomaar had mogen doen.</div>
+          </div>
+        </label>
+
         <label id="type-mulder" onclick="selectBoeteType('mulder')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
-          <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:52px;height:52px;object-fit:contain;flex-shrink:0">
+          <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:64px;height:64px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <div>
             <div style="font-weight:700;font-size:15px;color:var(--navy)">Mulderboete (CJIB)</div>
             <div style="font-size:13px;color:var(--muted);margin-top:2px">Te hard rijden, door rood of fout parkeren. Herkenbaar aan de letter M op de brief.</div>
@@ -572,18 +580,10 @@
         </label>
 
         <label id="type-parkeer" onclick="selectBoeteType('parkeer')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
-          <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:52px;height:52px;object-fit:contain;flex-shrink:0">
+          <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:64px;height:64px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <div>
             <div style="font-weight:700;font-size:15px;color:var(--navy)">Parkeerboete (gemeente)</div>
             <div style="font-size:13px;color:var(--muted);margin-top:2px">Naheffingsaanslag parkeerbelasting van de gemeente bij niet of te weinig betaald parkeergeld.</div>
-          </div>
-        </label>
-
-        <label id="type-fiets" onclick="selectBoeteType('fiets')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
-          <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:52px;height:52px;object-fit:contain;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:15px;color:var(--navy)">Fietsdepot (gemeente)</div>
-            <div style="font-size:13px;color:var(--muted);margin-top:2px">Je fiets is weggehaald en je denkt dat de gemeente dat niet zomaar had mogen doen.</div>
           </div>
         </label>
 
@@ -640,7 +640,7 @@
     <div class="card-header">
       <div class="step-label">Stap 3 van 5</div>
       <div class="card-title">Hoe kunnen wij je bereiken?</div>
-      <div class="card-subtitle">Vul je naam en e-mail in, meer hebben wij nu niet nodig.</div>
+      <div class="card-subtitle">Hoe kunnen wij je bereiken?</div>
     </div>
     <div class="card-body">
       <div class="field-row">
@@ -664,7 +664,7 @@
         <label>Telefoonnummer <span class="opt">(optioneel)</span></label>
         <input type="tel" id="telefoon" autocomplete="tel">
       </div>
-      <div class="info-box" style="margin-top:8px">🔒 Geen resultaat = €0. Je gegevens worden nooit gedeeld met derden.</div>
+      <div class="info-box" style="margin-top:8px">🔒 Je gegevens worden vertrouwelijk behandeld.</div>
     </div>
     <div class="card-footer">
       <button class="btn btn-secondary" onclick="prevStep(3)">← Terug</button>
@@ -676,13 +676,13 @@
   <div id="step4" class="step">
     <div class="card-header">
       <div class="step-label">Stap 4 van 5</div>
-      <div class="card-title">Weet je waarom de boete onterecht is?</div>
-      <div class="card-subtitle">Vertel het ons, maar het hoeft niet. Ook zonder toelichting kijken wij wat we kunnen doen.</div>
+      <div class="card-title">Wat was de situatie?</div>
+      <div class="card-subtitle">Beschrijf kort wat er is gebeurd. Dat helpt ons bij het bezwaar. Het hoeft niet, maar meer context is beter.</div>
     </div>
     <div class="card-body">
       <div class="field">
         <label>Waarom bent u het niet eens met de boete? <span class="opt">(optioneel)</span></label>
-        <textarea id="bezwaar" placeholder="Bijv: het bord was niet zichtbaar, ik stond er maar heel even, of mijn fiets was helemaal niet verwaarloosd..."></textarea>
+        <textarea id="bezwaar" placeholder="Bijv: het bord was niet zichtbaar, ik stond er maar even, of mijn fiets was helemaal niet verwaarloosd..."></textarea>
       </div>
     </div>
     <div class="card-footer">
@@ -719,7 +719,7 @@
           <span style="font-size:11px">🔍</span> Bekijk volledige machtiging
         </button>
         <div id="machtigingText" style="display:none;margin-top:8px;padding:12px 14px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
-          Ik machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen, verzoeken tot schadevergoeding en proceskostenvergoeding in te dienen, en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging heeft betrekking op het CJIB-nummer, aanslagnummer of besluitnummer: <strong id="machtigingNummer" style="color:var(--navy)">—</strong>. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
+          Ik machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen, verzoeken tot schadevergoeding en proceskostenvergoeding in te dienen, en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging heeft betrekking op het <span id="machtigingNummerLabel">CJIB-nummer, aanslagnummer of besluitnummer</span>: <strong id="machtigingNummer" style="color:var(--navy)">—</strong>. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
         </div>
       </div>
 
@@ -779,6 +779,15 @@
   // ====================================================
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzR98s7FnKZUEqJMQREHBpDqSlgzrnFsAtNXjRdoPUal9frmw9rOsIfaCKgJldjyY-Vzg/exec';
 
+  // Pre-select type from URL param (e.g. formulier.html?type=fiets)
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('type');
+    if (t && ['mulder','parkeer','fiets'].includes(t)) {
+      selectBoeteType(t);
+    }
+  })();
+
   function toggleMachtiging() {
     const el = document.getElementById('machtigingText');
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
@@ -821,6 +830,9 @@
     const cfg = typeConfig[type];
     document.getElementById('nummerLabel').textContent    = cfg.label;
     document.getElementById('boeteNummer').placeholder   = cfg.placeholder;
+    // Update machtiging nummer label
+    const numLabelEl = document.getElementById('machtigingNummerLabel');
+    if (numLabelEl) numLabelEl.textContent = {'mulder':'CJIB-nummer','parkeer':'Aanslagnummer','fiets':'Besluitnummer'}[type] || type;
     // Update icon in step 2
     const icons = { mulder: 'mulderboete.png', parkeer: 'parkeerboete.png', fiets: 'fietsboete.png' };
     document.getElementById('selectedTypeIcon').src = 'assets/images/' + icons[type];

@@ -101,7 +101,7 @@ h3{font-size:clamp(17px,2.5vw,22px);font-weight:600}
 /* TYPES */
 .types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
 .type-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 24px;transition:box-shadow .2s,transform .2s}
-.type-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.type-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}.type-card[onclick]{cursor:pointer}
 .type-icon{font-size:32px;margin-bottom:14px;display:flex;align-items:center;justify-content:center}
 .type-card h3{font-size:17px;color:var(--navy);margin-bottom:8px}
 .type-card p{font-size:14px;color:var(--muted);line-height:1.55}
@@ -282,19 +282,19 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
         <p class="lead" style="margin-top:12px">Controleer of je zaak in aanmerking komt. Twijfel je? Neem gerust contact op.</p>
       </div>
       <div class="types-grid">
-        <div class="type-card">
+        <div class="type-card" onclick="window.location.href='formulier.html?type=mulder'" style="cursor:pointer">
           <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:110px;height:110px;object-fit:contain;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <h3>Mulderboete (CJIB)</h3>
           <p>Boetes voor lichte verkeersovertredingen zoals te hard rijden, door rood rijden of fout parkeren. Herkenbaar aan de <strong>letter M</strong> rechtsboven op de brief.</p>
           <span class="type-badge">Meest voorkomend</span>
         </div>
-        <div class="type-card">
+        <div class="type-card" onclick="window.location.href='formulier.html?type=parkeer'" style="cursor:pointer">
           <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:110px;height:110px;object-fit:contain;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <h3>Parkeerboete (gemeente)</h3>
           <p>Naheffingsaanslag parkeerbelasting van de gemeente, opgelegd bij niet of te weinig betaald parkeergeld.</p>
           <span class="type-badge">Gemeente</span>
         </div>
-        <div class="type-card" style="border-color:rgba(234,130,47,.4);background:rgba(234,130,47,.04)">
+        <div class="type-card" onclick="window.location.href='formulier.html?type=fiets'" style="cursor:pointer;border-color:rgba(234,130,47,.4);background:rgba(234,130,47,.04)">
           <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:110px;height:110px;object-fit:contain;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <h3>Fietsdepot (gemeente)</h3>
           <p>Fiets weggehaald? Dit mag de gemeente niet zomaar doen. Wij controleren of de procedure correct is gevolgd, en maken bezwaar als dat niet het geval is.</p>
