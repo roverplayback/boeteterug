@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoeteTerug.nl — Binnenkort beschikbaar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0f1f3d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle background texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(200,168,75,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(26,50,96,0.6) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .card {
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .logo-mark {
+    width: 44px; height: 44px;
+    background: #c8a84b;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: #0f1f3d;
+    font-size: 22px;
+  }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .logo-text span { color: #c8a84b; }
+
+  .badge {
+    display: inline-block;
+    background: rgba(200,168,75,0.15);
+    border: 1px solid rgba(200,168,75,0.3);
+    color: #c8a84b;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 40px;
+    height: 3px;
+    background: #c8a84b;
+    border-radius: 2px;
+    margin: 0 auto 40px;
+  }
+
+  .contact {
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+  }
+  .contact a {
+    color: rgba(200,168,75,0.8);
+    text-decoration: none;
+  }
+  .contact a:hover { color: #c8a84b; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-row">
+      <div class="logo-mark">B</div>
+      <div class="logo-text">Boete<span>Terug</span>.nl</div>
+    </div>
+
+    <div class="badge">Binnenkort beschikbaar</div>
+
+    <h1>Wij gaan uw boete aanvechten</h1>
+
+    <div class="divider"></div>
+
+    <p>BoeteTerug.nl is binnenkort online. U kunt hier uw boete eenvoudig indienen en wij regelen de rest.</p>
+
+    <div class="contact">
+      Vragen? <a href="mailto:info@boeteterug.nl">info@boeteterug.nl</a>
+    </div>
+  </div>
+</body>
+</html>
