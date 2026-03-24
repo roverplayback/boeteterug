@@ -582,7 +582,7 @@
     </div>
     <div class="card-footer">
       <div></div>
-      <button class="btn btn-primary" onclick="nextStep(1)">Volgende, bijna klaar →</button>
+      <button class="btn btn-primary" onclick="nextStep(1)">Volgende →</button>
     </div>
   </div>
 
@@ -656,20 +656,21 @@
         <div style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.3px;margin-bottom:2px">Wat gebeurt er nu?</div>
         <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Wij maken bezwaar voor je</div>
         <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Jij hoeft niets te doen</div>
-        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Geen resultaat = €0</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Bij winst krijg jij het boetebedrag terug</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> De overheid vergoedt onze kosten</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Geen resultaat = geen kosten</div>
       </div>
 
       <!-- Checkbox 1: kort + uitklap -->
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">
-          Ik ga akkoord en machtig BoeteTerug om mijn boete aan te vechten en mijn zaak te behandelen.
-          <span style="display:block;font-size:12px;color:var(--muted);margin-top:3px">Geen resultaat = €0 (no cure, no pay)</span>
-        </span>
+        <span class="cb-label">Ik ga akkoord en machtig BoeteTerug om mijn boete aan te vechten en mijn zaak te behandelen.</span>
       </label>
-      <div style="margin:-8px 0 16px 0;padding:0 4px">
-        <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--navy);cursor:pointer;text-decoration:underline;padding:4px 0">Bekijk volledige machtiging</button>
-        <div id="machtigingText" style="display:none;margin-top:10px;padding:14px 16px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
+      <div style="margin:-6px 0 18px 4px">
+        <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px">
+          <span style="font-size:11px">🔍</span> Bekijk volledige machtiging
+        </button>
+        <div id="machtigingText" style="display:none;margin-top:8px;padding:12px 14px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
           Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug en machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
         </div>
       </div>
@@ -678,14 +679,14 @@
       <label class="checkbox-field" id="cb2Wrap">
         <input type="checkbox" id="cb2" onchange="checkboxChanged()">
         <span class="cb-label">
-          Ik begrijp dat dit no cure, no pay is: geen resultaat = €0. Als wij winnen, ontvang ik de vergoeding voor juridische hulp en maak ik dit door aan BoeteTerug. Het boetebedrag zelf mag ik houden.
-          <a href="index.html#kosten" style="display:inline-block;margin-top:3px;color:var(--navy);font-weight:600;text-decoration:underline;font-size:13px">Meer uitleg →</a>
+          Ik begrijp dat bij winst de overheid een vergoeding voor juridische kosten betaalt aan BoeteTerug en dat ik het boetebedrag zelf ontvang.
+          <a href="index.html#kosten" style="display:inline-block;margin-top:4px;color:var(--muted);font-size:12px;text-decoration:underline">Meer uitleg →</a>
         </span>
       </label>
 
       <!-- Handtekening -->
       <div class="field" style="margin-top:22px;">
-        <label>Handtekening <span style="font-weight:400;color:var(--muted);font-size:12px">(verplicht, kost 5 seconden)</span></label>
+        <label>Zet je handtekening <span style="font-weight:400;color:var(--muted);font-size:12px">(verplicht)</span></label>
         <div class="sig-wrap">
           <div class="sig-label-bar">
             <span>Teken met je vinger of muis</span>
