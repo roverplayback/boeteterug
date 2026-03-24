@@ -529,18 +529,22 @@
   <div class="progress-steps" id="progressSteps">
     <div class="step-dot active" data-step="1">
       <div class="dot-circle">1</div>
-      <div class="dot-label">Foto boete</div>
+      <div class="dot-label">Type boete</div>
     </div>
     <div class="step-dot" data-step="2">
       <div class="dot-circle">2</div>
-      <div class="dot-label">Persoonsgegevens</div>
+      <div class="dot-label">Foto boete</div>
     </div>
     <div class="step-dot" data-step="3">
       <div class="dot-circle">3</div>
-      <div class="dot-label">Bezwaar</div>
+      <div class="dot-label">Gegevens</div>
     </div>
     <div class="step-dot" data-step="4">
       <div class="dot-circle">4</div>
+      <div class="dot-label">Bezwaar</div>
+    </div>
+    <div class="step-dot" data-step="5">
+      <div class="dot-circle">5</div>
       <div class="dot-label">Akkoord</div>
     </div>
   </div>
@@ -549,10 +553,53 @@
 <main>
 <div class="card">
 
-  <!-- STAP 1: FOTO -->
+  <!-- STAP 1: TYPE BOETE -->
   <div id="step1" class="step active">
     <div class="card-header">
-      <div class="step-label">Stap 1 van 4</div>
+      <div class="step-label">Stap 1 van 5</div>
+      <div class="card-title">Wat voor zaak heb je?</div>
+      <div class="card-subtitle">Kies het type boete of maatregel dat je wilt aanvechten.</div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:12px">
+
+        <label id="type-mulder" onclick="selectBoeteType('mulder')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:52px;height:52px;object-fit:contain;flex-shrink:0">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Mulderboete (CJIB)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Te hard rijden, door rood of fout parkeren. Herkenbaar aan de letter M op de brief.</div>
+          </div>
+        </label>
+
+        <label id="type-parkeer" onclick="selectBoeteType('parkeer')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:52px;height:52px;object-fit:contain;flex-shrink:0">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Parkeerboete (gemeente)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Naheffingsaanslag parkeerbelasting van de gemeente bij niet of te weinig betaald parkeergeld.</div>
+          </div>
+        </label>
+
+        <label id="type-fiets" onclick="selectBoeteType('fiets')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:52px;height:52px;object-fit:contain;flex-shrink:0">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Fietsdepot (gemeente)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Je fiets is weggehaald en je denkt dat de gemeente dat niet zomaar had mogen doen.</div>
+          </div>
+        </label>
+
+      </div>
+      <div class="field-error" id="err-boeteType" style="margin-top:8px">Kies een type boete om door te gaan</div>
+    </div>
+    <div class="card-footer">
+      <div></div>
+      <button class="btn btn-primary" onclick="nextStep(1)">Volgende →</button>
+    </div>
+  </div>
+
+  <!-- STAP 2: FOTO -->
+  <div id="step2" class="step">
+    <div class="card-header">
+      <div class="step-label">Stap 2 van 5</div>
       <div class="card-title">Maak een foto van je boete</div>
       <div class="card-subtitle">Dat is alles wat je hoeft te doen. Wij regelen de rest.</div>
     </div>
@@ -580,47 +627,11 @@
       <input type="file" id="cameraInput" class="file-input-camera" accept="image/*" capture="environment">
       <input type="file" id="fileInput" class="file-input-camera" accept="image/*,application/pdf" multiple>
       <div class="field" style="margin-top:18px">
-        <label>CJIB-nummer, aanslagnummer of besluitnummer <span class="opt">(optioneel)</span></label>
-        <input type="text" id="boeteNummer" placeholder="Bijv. 1234 5678 9012 3456" autocomplete="off">
-        <div style="font-size:12px;color:var(--muted);margin-top:4px">Staat op je boete of beschikking. Meerdere nummers? Scheid ze met een komma.</div>
+        <label id="nummerLabel">CJIB-nummer *</label>
+        <input type="text" id="boeteNummer" placeholder="" autocomplete="off">
+        <div class="field-error" id="err-boeteNummer">Vul het nummer in</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Staat op je boete of beschikking.</div>
       </div>
-    </div>
-    <div class="card-footer">
-      <div></div>
-      <button class="btn btn-primary" onclick="nextStep(1)">Volgende →</button>
-    </div>
-  </div>
-
-  <!-- STAP 2: PERSOONSGEGEVENS -->
-  <div id="step2" class="step">
-    <div class="card-header">
-      <div class="step-label">Stap 2 van 4</div>
-      <div class="card-title">Hoe kunnen wij je bereiken?</div>
-      <div class="card-subtitle">Vul je naam en e-mail in, meer hebben wij nu niet nodig.</div>
-    </div>
-    <div class="card-body">
-      <div class="field-row">
-        <div class="field">
-          <label>Voornaam *</label>
-          <input type="text" id="voornaam" placeholder="Jan" autocomplete="given-name">
-          <div class="field-error" id="err-voornaam">Vul je voornaam in</div>
-        </div>
-        <div class="field">
-          <label>Achternaam *</label>
-          <input type="text" id="achternaam" placeholder="de Vries" autocomplete="family-name">
-          <div class="field-error" id="err-achternaam">Vul je achternaam in</div>
-        </div>
-      </div>
-      <div class="field">
-        <label>E-mailadres *</label>
-        <input type="email" id="email" placeholder="jan@example.nl" autocomplete="email">
-        <div class="field-error" id="err-email">Vul een geldig e-mailadres in</div>
-      </div>
-      <div class="field">
-        <label>Telefoonnummer <span class="opt">(optioneel)</span></label>
-        <input type="tel" id="telefoon" placeholder="06 12345678" autocomplete="tel">
-      </div>
-      <div class="info-box" style="margin-top:8px">🔒 Geen resultaat = €0. Je gegevens worden nooit gedeeld met derden.</div>
     </div>
     <div class="card-footer">
       <button class="btn btn-secondary" onclick="prevStep(2)">← Terug</button>
@@ -628,10 +639,47 @@
     </div>
   </div>
 
-  <!-- STAP 3: BEZWAAR -->
+  <!-- STAP 3: PERSOONSGEGEVENS -->
   <div id="step3" class="step">
     <div class="card-header">
-      <div class="step-label">Stap 3 van 4</div>
+      <div class="step-label">Stap 3 van 5</div>
+      <div class="card-title">Hoe kunnen wij je bereiken?</div>
+      <div class="card-subtitle">Vul je naam en e-mail in, meer hebben wij nu niet nodig.</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Voornaam *</label>
+          <input type="text" id="voornaam" autocomplete="given-name">
+          <div class="field-error" id="err-voornaam">Vul je voornaam in</div>
+        </div>
+        <div class="field">
+          <label>Achternaam *</label>
+          <input type="text" id="achternaam" autocomplete="family-name">
+          <div class="field-error" id="err-achternaam">Vul je achternaam in</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>E-mailadres *</label>
+        <input type="email" id="email" autocomplete="email">
+        <div class="field-error" id="err-email">Vul een geldig e-mailadres in</div>
+      </div>
+      <div class="field">
+        <label>Telefoonnummer <span class="opt">(optioneel)</span></label>
+        <input type="tel" id="telefoon" autocomplete="tel">
+      </div>
+      <div class="info-box" style="margin-top:8px">🔒 Geen resultaat = €0. Je gegevens worden nooit gedeeld met derden.</div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" onclick="prevStep(3)">← Terug</button>
+      <button class="btn btn-primary" onclick="nextStep(3)">Volgende →</button>
+    </div>
+  </div>
+
+  <!-- STAP 4: BEZWAAR -->
+  <div id="step4" class="step">
+    <div class="card-header">
+      <div class="step-label">Stap 4 van 5</div>
       <div class="card-title">Weet je waarom de boete onterecht is?</div>
       <div class="card-subtitle">Vertel het ons, maar het hoeft niet. Ook zonder toelichting kijken wij wat we kunnen doen.</div>
     </div>
@@ -642,15 +690,15 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-secondary" onclick="prevStep(3)">← Terug</button>
-      <button class="btn btn-primary" onclick="nextStep(3)">Volgende →</button>
+      <button class="btn btn-secondary" onclick="prevStep(5)">← Terug</button>
+      <button class="btn btn-primary" onclick="nextStep(4)">Volgende →</button>
     </div>
   </div>
 
-  <!-- STAP 4: AKKOORD -->
-  <div id="step4" class="step">
+  <!-- STAP 5: AKKOORD -->
+  <div id="step5" class="step">
     <div class="card-header">
-      <div class="step-label">Stap 4 van 4</div>
+      <div class="step-label">Stap 5 van 5</div>
       <div class="card-title">Bijna klaar, geef je akkoord</div>
       <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag. Geen resultaat = €0.</div>
     </div>
@@ -668,7 +716,7 @@
       <!-- Checkbox 1: kort + uitklap -->
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> en machtig BoeteTerug om namens mij bezwaar te maken, (hoger) beroep in te stellen en mijn zaak te behandelen.</span>
+        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" target="_blank" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> en machtig BoeteTerug om namens mij bezwaar te maken, (hoger) beroep in te stellen en mijn zaak te behandelen.</span>
       </label>
       <div style="margin:-6px 0 18px 4px">
         <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px">
@@ -702,7 +750,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-secondary" onclick="prevStep(4)">← Terug</button>
+      <button class="btn btn-secondary" onclick="prevStep(5)">← Terug</button>
       <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
         Start gratis bezwaar →
       </button>
@@ -750,10 +798,42 @@
   }
 
   // ====================================================
+  // BOETE TYPE SELECTIE
+  // ====================================================
+  window.selectedType = null; // 'mulder' | 'parkeer' | 'fiets'
+
+  const typeConfig = {
+    mulder:  { label: 'CJIB-nummer *',        placeholder: 'Bijv. 1234 5678 9012 3456' },
+    parkeer: { label: 'Aanslagnummer *',       placeholder: 'Staat op je naheffingsaanslag' },
+    fiets:   { label: 'Besluitnummer *',       placeholder: 'Staat op de brief of sticker' },
+  };
+
+  function selectBoeteType(type) {
+    window.selectedType = type;
+    // Visual selection
+    ['mulder','parkeer','fiets'].forEach(t => {
+      const el = document.getElementById('type-' + t);
+      if (t === type) {
+        el.style.borderColor = 'var(--accent)';
+        el.style.background  = 'rgba(234,130,47,0.06)';
+      } else {
+        el.style.borderColor = 'var(--border)';
+        el.style.background  = 'var(--bg)';
+      }
+    });
+    // Update nummer field label + placeholder
+    const cfg = typeConfig[type];
+    document.getElementById('nummerLabel').textContent    = cfg.label;
+    document.getElementById('boeteNummer').placeholder   = cfg.placeholder;
+    // Hide error
+    document.getElementById('err-boeteType').style.display = 'none';
+  }
+
+  // ====================================================
   // STEP LOGIC
   // ====================================================
   let currentStep = 1;
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   function showStep(n) {
     for (let i = 1; i <= totalSteps; i++) {
@@ -785,7 +865,7 @@
   function nextStep(from) {
     if (validate(from)) {
       showStep(from + 1);
-      if (from + 1 === 4) initSignaturePad();
+      if (from + 1 === 5) initSignaturePad();
     }
   }
 
@@ -807,13 +887,26 @@
   function validate(step) {
     let ok = true;
     if (step === 1) {
+      if (!window.selectedType) {
+        document.getElementById('err-boeteType').style.display = 'block';
+        ok = false;
+      }
+    }
+    if (step === 2) {
       if (!window.uploadedFiles || !window.uploadedFiles.length) {
         document.getElementById('photoZone').style.border = '2px dashed var(--error)';
         alert('Upload eerst een foto of scan van je boete.');
         ok = false;
       }
+      const nr = document.getElementById('boeteNummer').value.trim();
+      if (!nr) {
+        showErr('boeteNummer', true);
+        ok = false;
+      } else {
+        showErr('boeteNummer', false);
+      }
     }
-    if (step === 2) {
+    if (step === 3) {
       const fields = ['voornaam','achternaam','email'];
       fields.forEach(f => {
         const val = document.getElementById(f).value.trim();
@@ -823,8 +916,8 @@
         if (bad) ok = false;
       });
     }
-    if (step === 3) {
-      // bezwaar is optioneel, geen validatie nodig
+    if (step === 4) {
+      // bezwaar is optioneel
     }
     return ok;
   }
@@ -971,6 +1064,7 @@
       const boeteNummer = document.getElementById('boeteNummer').value.trim();
 
       const payload = {
+        boeteType:   window.selectedType || '',
         voornaam:    document.getElementById('voornaam').value.trim(),
         achternaam:  document.getElementById('achternaam').value.trim(),
         email:       document.getElementById('email').value.trim(),
@@ -999,7 +1093,7 @@
       }
 
       // Succes
-      for (let i = 1; i <= 4; i++) document.getElementById('step' + i).classList.remove('active');
+      for (let i = 1; i <= 5; i++) document.getElementById('step' + i).classList.remove('active');
       document.getElementById('successScreen').style.display = 'block';
       document.getElementById('progressSteps').style.display = 'none';
 
