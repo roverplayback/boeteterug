@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boete indienen, BoeteTerug.nl</title>
+<link rel="icon" type="image/png" href="assets/logos/logo_boete.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0f1f3d;
     --navy-mid: #1a3260;
-    --accent: #c8a84b;
+    --accent: #EA822F;
     --accent-light: #f0e0a8;
     --bg: #f7f6f2;
     --white: #ffffff;
@@ -436,7 +437,7 @@
     max-width: 260px;
     margin-left: auto;
   }
-  .btn-submit:hover { background: #b8963b; transform: translateY(-1px); }
+  .btn-submit:hover { background: #d06820; transform: translateY(-1px); }
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
   /* Info box */
@@ -519,7 +520,7 @@
 
 <header>
   <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
-    <div class="logo-mark">B</div>
+    <img src="assets/logos/logo_boete.png" alt="BoeteTerug" style="height:34px;width:auto;display:block">
     <div class="logo-text">Boete<span>Terug</span>.nl</div>
   </a>
 </header>
@@ -562,8 +563,8 @@
           <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
           <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
         </div>
-        <h3>Sleep je boete hierheen</h3>
-        <p>Of gebruik de knoppen hieronder om een foto te maken of een bestand te kiezen</p>
+        <h3>Sleep je boete(s) hierheen</h3>
+        <p>Je kunt meerdere bestanden tegelijk uploaden. Of gebruik de knoppen hieronder.</p>
         <div id="photoPreview" class="photo-preview">
           <img id="previewImg" src="" alt="Preview">
           <div class="file-name" id="fileName"></div>
@@ -578,7 +579,7 @@
         </button>
       </div>
       <input type="file" id="cameraInput" class="file-input-camera" accept="image/*" capture="environment">
-      <input type="file" id="fileInput" class="file-input-camera" accept="image/*,application/pdf">
+      <input type="file" id="fileInput" class="file-input-camera" accept="image/*,application/pdf" multiple>
     </div>
     <div class="card-footer">
       <div></div>
@@ -725,9 +726,11 @@
 <script>
   // ====================================================
   // CONFIG, vervang door uw eigen Google Apps Script URL
-  // Zie instructies onderaan dit bestand
   // ====================================================
-  const APPS_SCRIPT_URL = 'VERVANG_DOOR_UW_APPS_SCRIPT_URL';
+  // CONFIG — plak hier je Apps Script URL na deployen
+  // script.google.com → Implementeren → Webtoepassing
+  // ====================================================
+  const APPS_SCRIPT_URL = 'VERVANG_DOOR_JOUW_APPS_SCRIPT_URL';
 
   function toggleMachtiging() {
     const el = document.getElementById('machtigingText');
@@ -792,9 +795,9 @@
   function validate(step) {
     let ok = true;
     if (step === 1) {
-      if (!window.uploadedFile) {
+      if (!window.uploadedFiles || !window.uploadedFiles.length) {
         document.getElementById('photoZone').style.border = '2px dashed var(--error)';
-        alert('Upload of fotografeer eerst uw boete.');
+        alert('Upload eerst een foto of scan van je boete.');
         ok = false;
       }
     }
@@ -817,34 +820,58 @@
   // ====================================================
   // PHOTO UPLOAD
   // ====================================================
-  window.uploadedFile = null;
+  window.uploadedFiles = [];
 
-  function handleFile(file) {
-    if (!file) return;
-    window.uploadedFile = file;
-    document.getElementById('photoZone').classList.add('has-file');
-    document.getElementById('photoZone').querySelector('h3').textContent = 'Bestand geselecteerd ✓';
-    document.getElementById('photoZone').style.border = '';
-    document.getElementById('fileName').textContent = file.name;
-    document.getElementById('photoPreview').style.display = 'block';
-    if (file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = e => { document.getElementById('previewImg').src = e.target.result; };
-      reader.readAsDataURL(file);
-    } else {
-      document.getElementById('previewImg').src = '';
-      document.getElementById('previewImg').style.display = 'none';
-    }
+  function handleFiles(files) {
+    if (!files || !files.length) return;
+    window.uploadedFiles = Array.from(files);
+    const zone = document.getElementById('photoZone');
+    zone.classList.add('has-file');
+    zone.querySelector('h3').textContent = window.uploadedFiles.length === 1
+      ? 'Bestand geselecteerd ✓'
+      : `${window.uploadedFiles.length} bestanden geselecteerd ✓`;
+    zone.style.border = '';
+
+    // Show thumbnails
+    const preview = document.getElementById('photoPreview');
+    preview.style.display = 'block';
+    // Remove old thumbs
+    const existing = preview.querySelectorAll('.thumb-row');
+    existing.forEach(el => el.remove());
+    const thumbRow = document.createElement('div');
+    thumbRow.className = 'thumb-row';
+    thumbRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px';
+    window.uploadedFiles.forEach(file => {
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'position:relative';
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.style.cssText = 'width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--border)';
+        const reader = new FileReader();
+        reader.onload = e => { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+        wrap.appendChild(img);
+      } else {
+        const box = document.createElement('div');
+        box.style.cssText = 'width:72px;height:72px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:4px;background:var(--bg)';
+        box.textContent = file.name.slice(-12);
+        wrap.appendChild(box);
+      }
+      thumbRow.appendChild(wrap);
+    });
+    document.getElementById('previewImg').style.display = 'none';
+    preview.appendChild(thumbRow);
+    document.getElementById('fileName').textContent = window.uploadedFiles.map(f => f.name).join(', ');
   }
 
-  document.getElementById('cameraInput').addEventListener('change', e => handleFile(e.target.files[0]));
-  document.getElementById('fileInput').addEventListener('change', e => handleFile(e.target.files[0]));
+  document.getElementById('cameraInput').addEventListener('change', e => handleFiles(e.target.files));
+  document.getElementById('fileInput').addEventListener('change',   e => handleFiles(e.target.files));
 
   // Drag & drop
   const zone = document.getElementById('photoZone');
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.style.borderColor = 'var(--navy)'; });
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.style.borderColor = 'var(--navy)'; });
   zone.addEventListener('dragleave', () => { zone.style.borderColor = ''; });
-  zone.addEventListener('drop', e => { e.preventDefault(); handleFile(e.dataTransfer.files[0]); });
+  zone.addEventListener('drop',      e => { e.preventDefault(); handleFiles(e.dataTransfer.files); });
 
   // ====================================================
   // CHECKBOX STYLING
@@ -915,10 +942,9 @@
   }
 
   // ====================================================
-  // SUBMIT
+  // SUBMIT — stuurt JSON met base64 naar Apps Script
   // ====================================================
   async function submitForm() {
-    // Validate checkboxes
     const cb1 = document.getElementById('cb1').checked;
     const cb2 = document.getElementById('cb2').checked;
     if (!cb1 || !cb2) {
@@ -930,46 +956,64 @@
       return;
     }
     document.getElementById('err-sig').style.display = 'none';
-
-    // Show loader
     document.getElementById('loadingOverlay').classList.add('visible');
 
-    // Build FormData
-    const fd = new FormData();
-    fd.append('voornaam', document.getElementById('voornaam').value.trim());
-    fd.append('achternaam', document.getElementById('achternaam').value.trim());
-    fd.append('email', document.getElementById('email').value.trim());
-    if (document.getElementById('telefoon').value.trim()) fd.append('telefoon', document.getElementById('telefoon').value.trim());
-    
-    
-    
-    
-    fd.append('bezwaar', document.getElementById('bezwaar').value.trim());
-    fd.append('timestamp', new Date().toLocaleString('nl-NL'));
-
-    // Attach photo
-    if (window.uploadedFile) fd.append('boeteFoto', window.uploadedFile);
-
-    // Attach signature as PNG
-    const sigDataUrl = sigCanvas.toDataURL('image/png');
-    const sigBlob = await (await fetch(sigDataUrl)).blob();
-    fd.append('handtekening', sigBlob, 'handtekening.png');
-
     try {
-      if (APPS_SCRIPT_URL === 'VERVANG_DOOR_UW_APPS_SCRIPT_URL') {
-        // Demo mode, simulate success after 1.5s
-        await new Promise(r => setTimeout(r, 1500));
-      } else {
-        await fetch(APPS_SCRIPT_URL, { method: 'POST', body: fd });
-      }
+      // Handtekening → base64
+      const sigDataUrl  = sigCanvas.toDataURL('image/png');
+      const sigBase64   = sigDataUrl.split(',')[1];
+
+      // Boetebestanden → base64 array
+      const boeteFiles = window.uploadedFiles || [];
+      const boeteData  = await Promise.all(boeteFiles.map(file =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload  = () => resolve({
+            naam:   file.name,
+            mime:   file.type || 'image/jpeg',
+            data:   reader.result.split(',')[1],
+          });
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        })
+      ));
+      const bestandsnamen = boeteFiles.map(f => f.name).join(', ') || 'onbekend';
+
+      const payload = {
+        voornaam:    document.getElementById('voornaam').value.trim(),
+        achternaam:  document.getElementById('achternaam').value.trim(),
+        email:       document.getElementById('email').value.trim(),
+        telefoon:    document.getElementById('telefoon').value.trim(),
+        bezwaar:     document.getElementById('bezwaar').value.trim(),
+        bestandsnamen,
+        boeteFiles:  boeteData,
+        sigBase64,
+        timestamp:   new Date().toISOString(),
+      };
+
+      const resp = await fetch(APPS_SCRIPT_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+
+      const json = await resp.json().catch(() => ({}));
+
       document.getElementById('loadingOverlay').classList.remove('visible');
-      // Hide all steps & show success
+
+      if (json.status !== 'ok') {
+        alert(json.message || 'Er is een fout opgetreden. Probeer het opnieuw.');
+        return;
+      }
+
+      // Succes
       for (let i = 1; i <= 4; i++) document.getElementById('step' + i).classList.remove('active');
       document.getElementById('successScreen').style.display = 'block';
       document.getElementById('progressSteps').style.display = 'none';
+
     } catch (err) {
       document.getElementById('loadingOverlay').classList.remove('visible');
-      alert('Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.');
+      alert('Verbinding mislukt. Controleer je internetverbinding en probeer het opnieuw.');
       console.error(err);
     }
   }

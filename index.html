@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BoeteTerug.nl, Gratis bezwaar tegen uw verkeersboete</title>
-<meta name="description" content="Onterechte verkeersboete ontvangen? BoeteTerug.nl vecht je boete gratis aan. No cure, no pay. Dien je boete in en wij regelen de rest.">
+<meta name="description" content="Onterechte verkeersboete ontvangen? BoeteTerug.nl vecht je boete gratis aan. 100% gratis. Dien je boete in en wij regelen de rest.">
+<link rel="icon" type="image/png" href="assets/logos/logo_boete.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#0f1f3d;--navy-mid:#1a3260;--navy-light:#243f78;
-  --accent:#c8a84b;--bg:#f7f6f2;--white:#ffffff;
+  --accent:#EA822F;--bg:#f7f6f2;--white:#ffffff;
   --text:#1a1a2e;--muted:#7a7a8c;--border:#dddbd4;
   --radius:6px;--shadow:0 2px 24px rgba(15,31,61,.10);--max:1080px
 }
@@ -30,7 +31,7 @@ nav{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 16
 .nav-links li button{padding:7px 14px;border-radius:var(--radius);font-size:14px;font-weight:500;color:rgba(255,255,255,.75);background:none;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;transition:color .2s,background .2s}
 .nav-links li button:hover,.nav-links li button.active{color:#fff;background:rgba(255,255,255,.08)}
 .nav-cta{background:var(--accent)!important;color:var(--navy)!important;font-weight:600!important;padding:8px 18px!important}
-.nav-cta:hover{background:#b8963b!important}
+.nav-cta:hover{background:#d06820!important}
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;padding:4px}
 .nav-mobile{display:none;flex-direction:column;background:var(--navy-mid);padding:12px 24px 20px}
 .nav-mobile button{display:block;padding:11px 0;color:rgba(255,255,255,.8);font-size:15px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.08);background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;cursor:pointer;text-align:left;width:100%}
@@ -55,16 +56,16 @@ h3{font-size:clamp(17px,2.5vw,22px);font-weight:600}
 .btn-primary{background:var(--navy);color:#fff}
 .btn-primary:hover{background:var(--navy-mid);transform:translateY(-1px)}
 .btn-accent{background:var(--accent);color:var(--navy)}
-.btn-accent:hover{background:#b8963b;transform:translateY(-1px)}
+.btn-accent:hover{background:#d06820;transform:translateY(-1px)}
 .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
 .btn-outline:hover{background:var(--accent);color:var(--navy)}
 .btn-lg{padding:16px 34px;font-size:16px}
 
 /* HERO */
 .hero{background:var(--navy);padding:80px 24px 72px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 0%,rgba(200,168,75,.12) 0%,transparent 55%),radial-gradient(ellipse at 10% 100%,rgba(26,50,96,.5) 0%,transparent 50%);pointer-events:none}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 0%,rgba(234,130,47,.12) 0%,transparent 55%),radial-gradient(ellipse at 10% 100%,rgba(26,50,96,.5) 0%,transparent 50%);pointer-events:none}
 .hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(200,168,75,.15);border:1px solid rgba(200,168,75,.3);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.8px;padding:6px 14px;border-radius:20px;margin-bottom:24px}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(234,130,47,.15);border:1px solid rgba(234,130,47,.3);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.8px;padding:6px 14px;border-radius:20px;margin-bottom:24px}
 .hero h1{color:#fff;max-width:740px;margin:0 auto 20px}
 .hero h1 em{color:var(--accent);font-style:normal}
 .hero .lead{color:rgba(255,255,255,.65);margin:0 auto 36px}
@@ -92,7 +93,7 @@ h3{font-size:clamp(17px,2.5vw,22px);font-weight:600}
 .why-points{list-style:none;display:flex;flex-direction:column;gap:14px}
 .why-points li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(255,255,255,.8);line-height:1.55}
 .why-points li::before{content:'✓';color:var(--accent);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
-.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(200,168,75,.2);border-radius:10px;padding:32px}
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(234,130,47,.2);border-radius:10px;padding:32px}
 .info-card h3{color:var(--accent);margin-bottom:14px;font-size:20px}
 .info-card p{color:rgba(255,255,255,.7);font-size:15px;line-height:1.65;margin-bottom:14px}
 .info-card p:last-child{margin-bottom:0}
@@ -200,7 +201,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 <nav>
   <div class="nav-inner">
     <div class="logo" onclick="showPage('home')">
-      <div class="logo-mark">B</div>
+      <img src="assets/logos/logo_boete.png" alt="BoeteTerug" style="height:36px;width:auto;display:block">
       <div class="logo-text">Boete<span>Terug</span>.nl</div>
     </div>
     <ul class="nav-links">
@@ -225,12 +226,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">✓ Gratis &nbsp;·&nbsp; No cure, no pay &nbsp;·&nbsp; Geen verborgen kosten</div>
+      <div class="hero-badge">✓ Gratis &nbsp;·&nbsp; 100% gratis &nbsp;·&nbsp; Geen verborgen kosten</div>
       <h1>Boete of fiets weggehaald? Wij regelen het. <em>Gratis.</em></h1>
-      <p class="lead">Upload een foto van je boete en wij doen de rest. Bij verlies betaal je niks, bij winst krijg je het hele boetebedrag terug.</p>
+      <p class="lead">Upload een foto van je boete en wij doen de rest. Bij winst krijg je het hele boetebedrag terug.</p>
       <div class="hero-btns">
-        <button class="btn btn-accent btn-lg" onclick="window.location.href='formulier.html'">Boete indienen →</button>
         <button class="btn btn-outline" onclick="showPage('hoe')">Hoe werkt het?</button>
+        <button class="btn btn-accent btn-lg" onclick="window.location.href='formulier.html'">Boete indienen →</button>
       </div>
       <div class="hero-note">🔒 Je gegevens worden veilig en vertrouwelijk behandeld</div>
       <div class="hero-stats">
@@ -256,7 +257,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     <div class="container">
       <div class="text-center" style="max-width:740px;margin:0 auto">
         <div class="section-tag">Onze missie</div>
-        <h2>De overheid heeft ongelijk. Vaker dan u denkt.</h2>
+        <h2>De overheid heeft niet altijd gelijk.</h2>
         <p class="lead" style="margin-top:14px">Borden die niet kloppen. Fietsen die zomaar worden afgevoerd. Boetes op basis van een verkeerde inschatting. Het gebeurt vaker dan je denkt, en de meeste mensen betalen gewoon omdat bezwaar maken ingewikkeld lijkt. Dat is precies waarom BoeteTerug bestaat. Wij regelen het voor je, gratis, en houden de overheid scherp.</p>
       </div>
     </div>
@@ -282,11 +283,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
           <p>Naheffingsaanslag parkeerbelasting van de gemeente, opgelegd bij niet of te weinig betaald parkeergeld.</p>
           <span class="type-badge">Gemeente</span>
         </div>
-        <div class="type-card" style="border-color:rgba(200,168,75,.4);background:rgba(200,168,75,.04)">
+        <div class="type-card" style="border-color:rgba(234,130,47,.4);background:rgba(234,130,47,.04)">
           <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:110px;height:110px;object-fit:contain;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <h3>Fietsdepot (gemeente)</h3>
           <p>Fiets weggehaald? Dit mag de gemeente niet zomaar doen. Wij controleren of de procedure correct is gevolgd, en maken bezwaar als dat niet het geval is.</p>
-          <span class="type-badge" style="background:rgba(200,168,75,.15);color:#8a6a1a">Nieuw</span>
+          <span class="type-badge" style="background:rgba(234,130,47,.15);color:#b85a10">Nieuw</span>
         </div>
       </div>
     </div>
@@ -297,35 +298,35 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     <div class="container">
       <div style="max-width:820px;margin:0 auto">
         <div class="section-tag">Fietsdepot</div>
-        <h2 style="color:#fff;margin-bottom:20px">Uw fiets weggehaald? De gemeente had dat waarschijnlijk niet mogen doen.</h2>
-        <p style="color:rgba(255,255,255,.7);font-size:16px;line-height:1.75;margin-bottom:28px">In steeds meer gemeenten worden fietsen van straat gehaald en afgevoerd naar een fietsdepot. Dat klinkt als een nette maatregel, maar de realiteit is anders: de procedure wordt regelmatig niet of nauwelijks gevolgd, en mensen die niets verkeerd hebben gedaan betalen de dupe.</p>
+        <h2 style="color:#fff;margin-bottom:20px">Je fiets weggehaald? De gemeente had dat misschien helemaal niet mogen doen.</h2>
+        <p style="color:rgba(255,255,255,.7);font-size:16px;line-height:1.75;margin-bottom:28px">In steeds meer gemeenten worden fietsen van straat gehaald. Dat klinkt netjes, maar de regels worden lang niet altijd gevolgd. En mensen die niets verkeerd hebben gedaan zijn de dupe.</p>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:40px">
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(200,168,75,.2);border-radius:10px;padding:28px">
-            <h3 style="color:var(--accent);font-size:18px;margin-bottom:12px">⚠️ Wat is een bestuursdwangbesluit?</h3>
-            <p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7">Als de gemeente vindt dat u iets fout doet, zoals uw fiets op de verkeerde plek parkeren, mag zij u dwingen dat te stoppen. Doet u dat niet, dan mag zij dat zelf doen, op uw kosten. Dat heet bestuursdwang.</p>
-            <p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;margin-top:10px">Maar: dit is een <strong style="color:#fff">vergaande maatregel</strong>. Uw fiets is in een stad vaak uw belangrijkste vervoersmiddel. Tijdelijke inbeslagname is een ingrijpend middel, en dat mag de gemeente alleen inzetten als ze zich strikt aan de regels houdt.</p>
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(234,130,47,.2);border-radius:10px;padding:28px">
+            <h3 style="color:var(--accent);font-size:18px;margin-bottom:12px">⚠️ Hoe werkt dat dan?</h3>
+            <p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7">Als de gemeente vindt dat je iets verkeerd doet, mag ze je dat zelf laten oplossen. Doe je dat niet, dan mag ze dat zelf doen op jouw kosten. Maar: dat mag ze alleen als ze zich precies aan de regels houdt.</p>
+            <p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;margin-top:10px">Je fiets is in de stad vaak je belangrijkste vervoersmiddel. Dat zomaar weghalen is een grote stap, en niet één die de gemeente makkelijk mag zetten.</p>
           </div>
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(200,168,75,.2);border-radius:10px;padding:28px">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(234,130,47,.2);border-radius:10px;padding:28px">
             <h3 style="color:var(--accent);font-size:18px;margin-bottom:12px">🚲 Wanneer gaat het mis?</h3>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700">→</span>De gemeente plakt een sticker op uw fiets, maar vermeldt niet <em>welke overtreding</em> u begaat of wat u moet doen om uw fiets te redden.</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700">→</span>U krijgt geen echte kans om de vermeende overtreding te verhelpen vóór de fiets wordt weggehaald.</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700">→</span>Een gewone stadsfiets wordt bestempeld als 'verwaarloosd' op basis van subjectieve criteria, terwijl u er dagelijks op rijdt.</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700">→</span>De termijn tussen waarschuwing en wegname is te kort, of er is helemaal geen waarschuwing geweest.</li>
-            </ul>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700;margin-top:1px">→</span><span>De sticker op je fiets zegt niet welke overtreding je begaat of wat je kunt doen om je fiets te redden.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700;margin-top:1px">→</span><span>Je krijgt geen echte kans om het te verhelpen voordat ze je fiets weghalen.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700;margin-top:1px">→</span><span>Een gewone stadsfiets wordt 'verwaarloosd' genoemd, terwijl je er dagelijks op rijdt.</span></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.7);line-height:1.6"><span style="color:var(--accent);flex-shrink:0;font-weight:700;margin-top:1px">→</span><span>De termijn tussen waarschuwing en wegname is te kort, of er is helemaal geen waarschuwing geweest.</span></div>
+            </div>
           </div>
         </div>
 
-        <div style="background:rgba(200,168,75,.1);border:1px solid rgba(200,168,75,.3);border-radius:10px;padding:28px;margin-bottom:32px">
-          <h3 style="color:var(--accent);font-size:18px;margin-bottom:14px">📋 Wat zijn uw rechten?</h3>
-          <p style="color:rgba(255,255,255,.8);font-size:15px;line-height:1.7;margin-bottom:12px">De gemeente is wettelijk verplicht u <strong style="color:#fff">in staat te stellen de vermeende overtreding te verhelpen</strong> vóórdat zij uw fiets weghaalt. Dat betekent in de praktijk: een duidelijke kennisgeving met de reden, een redelijke termijn, en een concrete beschrijving van wat u moet doen.</p>
-          <p style="color:rgba(255,255,255,.8);font-size:15px;line-height:1.7">Een vage sticker met tekst als "deze fiets wordt verwijderd" zonder nadere uitleg voldoet daar doorgaans <strong style="color:#fff">niet</strong> aan. Wij controleren of de procedure correct is gevolgd en maken zo nodig bezwaar, zodat u uw fiets terug krijgt of de kosten worden kwijtgescholden.</p>
+        <div style="background:rgba(234,130,47,.1);border:1px solid rgba(234,130,47,.3);border-radius:10px;padding:28px;margin-bottom:32px">
+          <h3 style="color:var(--accent);font-size:18px;margin-bottom:14px">📋 Wat zijn je rechten?</h3>
+          <p style="color:rgba(255,255,255,.8);font-size:15px;line-height:1.7;margin-bottom:12px">De gemeente moet je de kans geven om het probleem zelf op te lossen <strong style="color:#fff">voordat ze je fiets weghalen</strong>. Dat betekent: een duidelijke uitleg van wat er mis is, en genoeg tijd om het te regelen.</p>
+          <p style="color:rgba(255,255,255,.8);font-size:15px;line-height:1.7">Een vage sticker zonder uitleg voldoet daar vaak niet aan. Wij controleren of de gemeente de regels heeft gevolgd en maken bezwaar als dat niet zo is.</p>
         </div>
 
         <div style="text-align:center">
-          <button class="btn btn-accent btn-lg" onclick="window.location.href='formulier.html'">Bezwaar maken tegen fietsdepot →</button>
-          <p style="color:rgba(255,255,255,.4);font-size:13px;margin-top:12px">Gratis, no cure no pay. Duurt 3 minuten.</p>
+          <button class="btn btn-accent btn-lg" onclick="window.location.href='formulier.html'">Boete indienen →</button>
+          <p style="color:rgba(255,255,255,.4);font-size:13px;margin-top:12px">100% gratis. Duurt 3 minuten.</p>
         </div>
       </div>
     </div>
@@ -333,9 +334,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 
   <section class="cta-banner">
     <div class="container">
-      <h2>Klaar om je boete te laten aanvechten?</h2>
-      <p>Het duurt minder dan 3 minuten. Je hoeft je huis niet voor uit.</p>
-      <button class="btn btn-primary btn-lg" onclick="window.location.href='formulier.html'">Start nu, het is gratis →</button>
+      <h2>Klaar om je boete in te dienen?</h2>
+      <p>100% gratis. Je hoeft je huis er niet voor uit.</p>
+      <button class="btn btn-accent btn-lg" onclick="window.location.href='formulier.html'">Boete indienen →</button>
     </div>
   </section>
 </div>
@@ -345,8 +346,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
   <section class="hiw-hero">
     <div class="container">
       <div class="section-tag">Stap voor stap</div>
-      <h1>Hoe werkt BoeteTerug.nl?</h1>
-      <p class="lead">Van het indienen van je boete tot de uitslag, wij nemen alles uit handen.</p>
+      <h1>Hoe werkt het?</h1>
+      <p class="lead">Jij uploadt je boete. Wij doen de rest. Meer hoef je niet te weten.</p>
     </div>
   </section>
   <section class="section" style="background:var(--white)">
@@ -355,62 +356,40 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
         <div class="hiw-step">
           <div class="hiw-step-num">1</div>
           <div class="hiw-step-body">
-            <h3>Foto maken en gegevens invullen</h3>
-            <p>U fotografeert je boete direct vanuit het formulier op uw telefoon, of uploadt een scan. Vervolgens vult u uw persoons- en boetegegevens in. Dit kost u hooguit 3 minuten.</p>
-            <ul>
-              <li>Maak een duidelijke foto van de voorkant van de boete</li>
-              <li>Vul je naam, adres en IBAN in</li>
-              <li>Geef optioneel aan waarom u het niet eens bent met de boete</li>
-              <li>Zet uw digitale handtekening ter akkoord</li>
-            </ul>
+            <h3>Foto en gegevens</h3>
+            <p>Maak een foto van je boete en vul je naam en e-mail in. Dat is alles. Duurt 3 minuten, ook op je telefoon.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">2</div>
           <div class="hiw-step-body">
-            <h3>Wij analyseren je zaak</h3>
-            <p>Onze juristen bestuderen je boete zorgvuldig op fouten in tijdstip, locatie, kenteken en rechtmatigheid. Op basis van jarenlange ervaring weten wij precies waar kansen liggen.</p>
-            <ul>
-              <li>Grondige controle op procedurele en inhoudelijke fouten</li>
-              <li>Beoordeling van bewijs en omstandigheden</li>
-              <li>Indien nodig: verzamelen van aanvullend bewijsmateriaal</li>
-            </ul>
+            <h3>Wij kijken of er iets klopt</h3>
+            <p>Wij bekijken je boete op fouten: verkeerd kenteken, fout tijdstip, onduidelijk bord, slechte procedure. Als er iets niet klopt, maken wij bezwaar.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">3</div>
           <div class="hiw-step-body">
-            <h3>Wij dienen het bezwaar in</h3>
-            <p>Wij stellen een professioneel bezwaarschrift op en dienen dit namens u in bij het CJIB, de gemeente of het Openbaar Ministerie. Je hoeft zelf geen contact op te nemen met overheidsdiensten.</p>
-            <ul>
-              <li>Juridisch onderbouwd bezwaarschrift</li>
-              <li>Wij verzorgen alle correspondentie</li>
-              <li>Wij verschijnen zo nodig ter zitting</li>
-            </ul>
+            <h3>Wij regelen alles</h3>
+            <p>Wij schrijven het bezwaar en sturen het op naar de juiste instantie. Jij hoeft zelf geen brief te schrijven of te bellen.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">4</div>
           <div class="hiw-step-body">
-            <h3>U wacht rustig af</h3>
-            <p>Wij volgen je zaak nauwlettend en houden u per e-mail op de hoogte van elke stap. Je hoeft zelf nergens achteraan te gaan of instanties te bellen.</p>
-            <ul>
-              <li>Statusupdates per e-mail bij elke stap</li>
-              <li>Gemiddelde doorlooptijd: 6 tot 16 weken</li>
-              <li>Wij nemen contact op als er iets nodig is</li>
-            </ul>
+            <h3>Wachten op de uitslag</h3>
+            <p>Wij volgen je zaak en houden je per mail op de hoogte. Gemiddeld duurt het 6 tot 16 weken. Je hoeft zelf nergens achteraan.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">5</div>
           <div class="hiw-step-body">
-            <h3>U ontvangt de uitslag</h3>
-            <p>Winnen wij? Dan betaalt de overheid onze vergoeding. Het kan zijn dat u de proceskostenvergoeding eerst op je rekening ontvangt, u maakt dit bedrag vervolgens aan ons over. <strong>Per saldo betaalt u nooit iets uit eigen zak.</strong></p>
-            <p>Verliezen wij? Dan ontvangt u van ons geen factuur. Geen kosten, geen zorgen.</p>
+            <h3>Uitslag</h3>
+            <p>Winnen wij? Dan krijg je het boetebedrag terug. De overheid betaalt onze vergoeding, niet jij. Verliezen wij? Dan betaal je niks.</p>
           </div>
         </div>
       </div>
@@ -419,8 +398,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
   <section class="cta-banner">
     <div class="container">
       <h2>Direct je boete indienen?</h2>
-      <p>Het kost u 3 minuten. Wij doen de rest.</p>
-      <button class="btn btn-primary btn-lg" onclick="window.location.href='formulier.html'">Boete indienen →</button>
+      <p>100% gratis. Duurt 3 minuten.</p>
+      <button class="btn btn-accent btn-lg" onclick="window.location.href='formulier.html'">Boete indienen →</button>
     </div>
   </section>
 </div>
@@ -430,40 +409,39 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
   <section style="background:var(--navy);padding:56px 24px;text-align:center">
     <div class="container">
       <div class="section-tag">Veelgestelde vragen</div>
-      <h1 style="color:#fff;margin-bottom:14px">FAQ</h1>
-      <p class="lead" style="color:rgba(255,255,255,.65);margin:0 auto">Antwoorden op de meest gestelde vragen over onze werkwijze, kosten en procedure.</p>
+      <h1 style="color:#fff;margin-bottom:14px">Veelgestelde vragen</h1>
+      <p class="lead" style="color:rgba(255,255,255,.65);margin:0 auto">Kort en duidelijk. Meer vragen? Stuur ons een bericht.</p>
     </div>
   </section>
   <section class="section" style="background:var(--white)">
     <div class="container">
-      <div class="faq-cat">Over BoeteTerug.nl</div>
+      <div class="faq-cat">Over BoeteTerug</div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is BoeteTerug.nl echt gratis? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Ja, onze dienstverlening is volledig gratis voor u. Wanneer wij je zaak winnen, is de overheid wettelijk verplicht onze juridische kosten te vergoeden. Verlies je? Dan brengen wij u helemaal niets in rekening. Er zijn geen verborgen kosten, geen abonnementskosten en geen administratiekosten.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe verdienen jullie dan geld? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Wanneer een boete onterecht blijkt en wij succesvol bezwaar maken, is de overheid op grond van het Besluit proceskosten bestuursrecht verplicht de kosten voor juridische bijstand te vergoeden. Deze <strong>proceskostenvergoeding</strong> is onze inkomstenbron. Wij verdienen dus alleen wanneer wij ook resultaat boeken voor u.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Welke boetes behandelen jullie? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Wij behandelen drie soorten boetes:<br><br><strong>Mulderboetes (CJIB)</strong>, herkenbaar aan de letter M rechtsboven. Boetes voor lichte verkeersovertredingen zoals te hard rijden, door rood rijden of fout parkeren.<br><br><strong>Parkeerboetes (gemeente)</strong>, naheffingsaanslagen bij niet of te weinig betaald parkeergeld.<br><br><strong>Strafbeschikkingen (OM)</strong>, opgelegd door de officier van justitie, herkenbaar aan de letter O rechtsboven. Neem bij twijfel contact met ons op.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe groot is de kans dat mijn bezwaar slaagt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dat hangt af van het soort boete en de omstandigheden. Uit onderzoek blijkt dat gemiddeld <strong>25% van de verkeersboetes onterecht</strong> wordt opgelegd, door fouten in tijdstip, locatie of kenteken. Wij beoordelen je zaak zorgvuldig voordat wij bezwaar indienen.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is het echt gratis? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Ja, 100% gratis. Als wij winnen, betaalt de overheid onze vergoeding. Verlies je? Dan betaal je niks. Geen verborgen kosten, geen gedoe.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe verdienen jullie dan geld? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij een boete succesvol aanvechten, is de overheid verplicht onze kosten te vergoeden. Dat is onze inkomst. Wij verdienen dus alleen als het ook echt wat oplevert voor jou.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Welke boetes pakken jullie aan? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner"><strong>Mulderboete (CJIB)</strong> — herkenbaar aan de letter M op de brief. Denk aan te hard rijden of door rood.<br><br><strong>Parkeerboete (gemeente)</strong> — te weinig parkeergeld betaald.<br><br><strong>Fietsdepot (gemeente)</strong> — je fiets is weggehaald en je denkt dat dat niet mocht.<br><br>Twijfel je? Stuur ons gewoon een bericht.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe groot is de kans dat het lukt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">1 op de 3 boetes blijkt onterecht. Wij kijken of er fouten in zitten voordat wij bezwaar indienen. Geen garantie, maar wij gaan alleen verder als we een kans zien.</div></div></div>
       </div>
 
-      <div class="faq-cat">Kosten &amp; betalingen</div>
+      <div class="faq-cat">Kosten</div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ik heb geld ontvangen op mijn rekening, wat nu? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Sinds 1 januari 2024 maakt de overheid de proceskostenvergoeding rechtstreeks over aan de kentekenhouder, u, in plaats van aan ons. Dit geld is echter bestemd als vergoeding voor onze juridische dienstverlening. U ontvangt van ons een factuur, waarna u het ontvangen bedrag naar ons overmaakt. <strong>Per saldo betaalt u nooit meer dan u heeft ontvangen</strong>, het kost u dus niets uit eigen zak.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat als mijn bezwaar wordt afgewezen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als je bezwaar wordt afgewezen, betaal je niets. Wij nemen al het risico. U ontvangt geen factuur van ons. Afhankelijk van de zaak kunnen wij ook in beroep gaan bij de kantonrechter, ook dat is voor u kosteloos.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Moet ik de boete betalen terwijl het bezwaar loopt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Wij adviseren u de boete <strong>direct te betalen</strong>, ook als in de brief staat dat dit nog niet hoeft. Dit voorkomt verhogingen en zorgt dat wij je zaak indien nodig aan de kantonrechter kunnen voorleggen. Als wij winnen, krijgt u het betaalde bedrag gewoon teruggestort.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ik heb geld ontvangen op mijn rekening, wat nu? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij winnen, maakt de overheid een vergoeding voor onze juridische hulp over op jouw rekening. Dat bedrag is voor ons, niet voor jou. Je maakt het door aan BoeteTerug. Het boetebedrag zelf mag je houden. <a href="#" onclick="showPage('kosten')" style="color:var(--navy);font-weight:600">Meer uitleg →</a></div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat als mijn bezwaar wordt afgewezen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dan betaal je niks. Geen factuur, geen kosten. Afhankelijk van de zaak kijken we of we in beroep kunnen gaan, ook dat is gratis.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Moet ik de boete betalen terwijl het bezwaar loopt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Ja, betaal de boete gewoon. Dit voorkomt dat hij hoger wordt. Als wij winnen, krijg je het terug.</div></div></div>
       </div>
 
       <div class="faq-cat">De procedure</div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe lang duurt de bezwaarprocedure? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">De doorlooptijd verschilt per soort boete:<br><br>• <strong>Mulderboete (CJIB)</strong>: de officier van justitie heeft 16 weken de tijd, met mogelijke verlenging van 10 weken.<br>• <strong>Parkeerboete (gemeente)</strong>: gemiddeld 10 weken na indiening.<br><br>Wij houden u via e-mail op de hoogte van elke stap.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat moet ik zelf doen tijdens de procedure? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Vrijwel niets. Je hoeft alleen je boete en gegevens in te dienen via ons formulier. Wij verzorgen daarna alles: de analyse, het bezwaarschrift, de indiening en de communicatie met de instanties.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe snel moet ik mijn boete indienen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">U heeft doorgaans <strong>6 weken</strong> na dagtekening om bezwaar in te dienen. Wij adviseren dit zo snel mogelijk te doen, zodat wij voldoende tijd hebben je zaak goed voor te bereiden. Dien je boete in zodra u deze ontvangt.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe word ik op de hoogte gehouden? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Na indiening ontvangt u een bevestiging per e-mail. Vervolgens houden wij u op de hoogte van de ontvangstbevestiging, de voortgang en de uitslag. Je hoeft zelf nergens achteraan te gaan.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe lang duurt het? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dat verschilt per soort boete. Gemiddeld 6 tot 16 weken. Wij houden je per mail op de hoogte.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat moet ik zelf doen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Alleen het formulier invullen en je boete uploaden. De rest doen wij.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe snel moet ik indienen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Je hebt 6 weken na de datum op de boete. Doe het zo snel mogelijk, dan hebben wij genoeg tijd.</div></div></div>
       </div>
     </div>
   </section>
   <section class="cta-banner">
     <div class="container">
-      <h2>Nog vragen? Neem gerust contact op.</h2>
-      <p>Of dien direct je boete in, het is gratis en duurt 3 minuten.</p>
+      <h2>Nog vragen?</h2>
+      <p>Of dien direct je boete in. Duurt 3 minuten.</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="showPage('contact')">Contact opnemen</button>
         <button class="btn btn-accent" onclick="window.location.href='formulier.html'">Boete indienen →</button>
@@ -521,7 +499,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     <h2>1. Identiteit</h2><p>BoeteTerug.nl is een dienst gericht op het gratis indienen van bezwaar tegen verkeers- en parkeerboetes namens haar cliënten.</p>
     <h2>2. Toepasselijkheid</h2><p>Deze voorwaarden zijn van toepassing op alle overeenkomsten tussen BoeteTerug.nl en de cliënt. Door gebruik te maken van onze diensten gaat u akkoord met deze voorwaarden.</p>
     <h2>3. Dienstverlening</h2><p>BoeteTerug.nl biedt juridische bijstand bij het indienen van bezwaar tegen verkeers- en parkeerboetes. Wij analyseren de boete, stellen het bezwaarschrift op en dienen dit in bij de bevoegde instantie. Waar opportuun vertegenwoordigen wij u ook bij de kantonrechter.</p>
-    <h2>4. No cure, no pay</h2><p>BoeteTerug.nl hanteert uitsluitend het no cure, no pay-principe. Bij een niet-succesvolle procedure bent u niets verschuldigd. Bij een succesvolle uitkomst is de cliënt verplicht de proceskostenvergoeding van de overheid door te betalen aan BoeteTerug.nl, conform het Besluit proceskosten bestuursrecht.</p>
+    <h2>4. 100% gratis</h2><p>BoeteTerug.nl hanteert uitsluitend het 100% gratis-principe. Bij een niet-succesvolle procedure bent u niets verschuldigd. Bij een succesvolle uitkomst is de cliënt verplicht de proceskostenvergoeding van de overheid door te betalen aan BoeteTerug.nl, conform het Besluit proceskosten bestuursrecht.</p>
     <h2>5. Verplichtingen cliënt</h2><ul><li>De cliënt verstrekt juiste en volledige informatie.</li><li>De cliënt machtigt BoeteTerug.nl om namens hem/haar bezwaar te maken.</li><li>De cliënt is verplicht een ontvangen proceskostenvergoeding door te betalen aan BoeteTerug.nl.</li><li>De cliënt betaalt de boete tijdig om afwijzing te voorkomen.</li></ul>
     <h2>6. Aansprakelijkheid</h2><p>BoeteTerug.nl is niet aansprakelijk voor schade die voortvloeit uit het niet-slagen van een procedure. Wij doen alles wat redelijkerwijs in ons vermogen ligt, maar kunnen geen garantie bieden op uitkomst.</p>
     <h2>7. Toepasselijk recht</h2><p>Op alle overeenkomsten is Nederlands recht van toepassing. Geschillen worden bij voorkeur in onderling overleg opgelost.</p>
@@ -545,7 +523,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 <div id="page-kosten" class="page">
   <section style="background:var(--navy);padding:40px 24px;text-align:center"><div class="container"><h1 style="color:#fff;font-size:28px">Kostenbeleid</h1><p style="color:rgba(255,255,255,.6);margin-top:8px;font-size:14px">Transparantie over onze werkwijze</p></div></section>
   <section class="section"><div class="container"><div class="legal-content">
-    <h2>No cure, no pay</h2><p>BoeteTerug.nl werkt volledig op basis van no cure, no pay. Je betaalt <strong>nooit iets uit eigen zak</strong>. Verliezen wij? Dan brengen wij u niets in rekening. Winnen wij? Dan betaalt de overheid onze vergoeding.</p>
+    <h2>100% gratis</h2><p>BoeteTerug.nl werkt volledig op basis van 100% gratis. Je betaalt <strong>nooit iets uit eigen zak</strong>. Verliezen wij? Dan brengen wij u niets in rekening. Winnen wij? Dan betaalt de overheid onze vergoeding.</p>
     <h2>Hoe zijn wij gefinancierd?</h2><p>Wanneer een boete onterecht wordt bevonden, is de overheid op grond van het Besluit proceskosten bestuursrecht verplicht de kosten van juridische bijstand te vergoeden. Deze proceskostenvergoeding vormt de basis van onze inkomsten. Wij verdienen uitsluitend wanneer wij resultaat boeken voor u.</p>
     <h2>De situatie in de praktijk</h2><p>De overheid maakt de proceskostenvergoeding over op uw eigen rekening. Dit bedrag is bestemd als vergoeding voor de juridische bijstand van BoeteTerug.nl. U ontvangt hierover van ons een factuur, waarna u het ontvangen bedrag naar ons overmaakt. <strong>Het boetebedrag zelf mag u houden.</strong></p><p>Zodra u de vergoeding heeft ontvangen, stuurt BoeteTerug.nl u een factuur ter hoogte van dat bedrag. <strong>Het bedrag dat u betaalt is nooit hoger dan wat u van de overheid heeft ontvangen.</strong></p>
     <h2>Zijn er verborgen kosten?</h2><p>Nee. Geen verborgen kosten, geen abonnementskosten, geen administratiekosten.</p>
@@ -559,10 +537,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo" onclick="showPage('home')">
-          <div class="logo-mark">B</div>
+          <img src="assets/logos/logo_boete.png" alt="BoeteTerug" style="height:36px;width:auto;display:block">
           <div class="logo-text">Boete<span>Terug</span>.nl</div>
         </div>
-        <p>Gratis bezwaar maken tegen uw verkeers- of parkeerboete. No cure, no pay, wij verdienen alleen als u wint.</p>
+        <p>Gratis bezwaar maken tegen uw verkeers- of parkeerboete. 100% gratis, </p>
       </div>
       <div class="footer-col">
         <h4>Navigatie</h4>
