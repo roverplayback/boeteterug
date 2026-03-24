@@ -534,14 +534,10 @@
     </div>
     <div class="step-dot" data-step="3">
       <div class="dot-circle">3</div>
-      <div class="dot-label">Boetegegevens</div>
+      <div class="dot-label">Bezwaar</div>
     </div>
     <div class="step-dot" data-step="4">
       <div class="dot-circle">4</div>
-      <div class="dot-label">Bezwaar</div>
-    </div>
-    <div class="step-dot" data-step="5">
-      <div class="dot-circle">5</div>
       <div class="dot-label">Akkoord</div>
     </div>
   </div>
@@ -643,54 +639,10 @@
     </div>
   </div>
 
-  <!-- STAP 3: BOETEGEGEVENS -->
+  <!-- STAP 3: BEZWAAR -->
   <div id="step3" class="step">
     <div class="card-header">
-      <div class="step-label">Stap 3 van 5</div>
-      <div class="card-title">Gegevens van de boete</div>
-      <div class="card-subtitle">Vul de gegevens in zoals vermeld op de boete.</div>
-    </div>
-    <div class="card-body">
-      <div class="field-row">
-        <div class="field">
-          <label>Kenteken *</label>
-          <input type="text" id="kenteken" placeholder="AB-123-C" style="text-transform:uppercase">
-          <div class="field-error" id="err-kenteken">Vul het kenteken in</div>
-        </div>
-        <div class="field">
-          <label>Datum boete *</label>
-          <input type="date" id="datumBoete">
-          <div class="field-error" id="err-datumBoete">Vul de datum in</div>
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Boetebedrag (€) *</label>
-          <input type="number" id="bedrag" placeholder="130" min="1">
-          <div class="field-error" id="err-bedrag">Vul het bedrag in</div>
-        </div>
-        <div class="field">
-          <label>CJIB- / kenmerknummer *</label>
-          <input type="text" id="cjib" placeholder="0000 0000 0000 0000">
-          <div class="field-error" id="err-cjib">Vul het CJIB-nummer in</div>
-        </div>
-      </div>
-      <div class="field">
-        <label>Gemeente / instantie *</label>
-        <input type="text" id="gemeente" placeholder="Gemeente Amsterdam">
-        <div class="field-error" id="err-gemeente">Vul de gemeente in</div>
-      </div>
-    </div>
-    <div class="card-footer">
-      <button class="btn btn-secondary" onclick="prevStep(3)">← Terug</button>
-      <button class="btn btn-primary" onclick="nextStep(3)">Volgende →</button>
-    </div>
-  </div>
-
-  <!-- STAP 4: BEZWAAR -->
-  <div id="step4" class="step">
-    <div class="card-header">
-      <div class="step-label">Stap 4 van 5</div>
+      <div class="step-label">Stap 3 van 4</div>
       <div class="card-title">Uw bezwaar</div>
       <div class="card-subtitle">Geef aan waarom u het niet eens bent met de boete. Dit veld is optioneel.</div>
     </div>
@@ -701,15 +653,15 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-secondary" onclick="prevStep(4)">← Terug</button>
-      <button class="btn btn-primary" onclick="nextStep(4)">Volgende →</button>
+      <button class="btn btn-secondary" onclick="prevStep(3)">← Terug</button>
+      <button class="btn btn-primary" onclick="nextStep(3)">Volgende →</button>
     </div>
   </div>
 
-  <!-- STAP 5: AKKOORD -->
-  <div id="step5" class="step">
+  <!-- STAP 4: AKKOORD -->
+  <div id="step4" class="step">
     <div class="card-header">
-      <div class="step-label">Stap 5 van 5</div>
+      <div class="step-label">Stap 4 van 4</div>
       <div class="card-title">Wij hebben alleen nog uw bevestiging nodig</div>
       <div class="card-subtitle">Om voor u aan de slag te gaan hebben wij alleen nog maar uw akkoord nodig.</div>
     </div>
@@ -720,12 +672,12 @@
 
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ga akkoord met de <a href="#" style="color:var(--navy);font-weight:600;">algemene voorwaarden</a> van BoeteTerug.nl.</span>
+        <span class="cb-label">Ik ga akkoord met de <a href="index.html#kosten" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug.nl en machtig BoeteTerug.nl om namens mij bezwaar te maken, verweer te voeren en informatie op te vragen bij overheidsinstanties. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.</span>
       </label>
 
       <label class="checkbox-field" id="cb2Wrap">
         <input type="checkbox" id="cb2" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ben mij ervan bewust dat de vergoeding van BoeteTerug.nl op mijn rekening wordt overgemaakt en verplicht mij tot overmaken van deze vergoeding op eerste aanwijzing.</span>
+        <span class="cb-label">Ik begrijp dat BoeteTerug.nl gratis werkt. Als wij winnen, betaalt de overheid een vergoeding voor onze juridische hulp. Die vergoeding ontvang ik op mijn eigen rekening en ik maak dit bedrag door aan BoeteTerug.nl. Het boetebedrag zelf mag ik houden. <a href="index.html#kosten" style="color:var(--navy);font-weight:600;text-decoration:underline;">Meer uitleg over de kosten →</a></span>
       </label>
 
       <div class="field" style="margin-top:22px;">
@@ -742,7 +694,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-secondary" onclick="prevStep(5)">← Terug</button>
+      <button class="btn btn-secondary" onclick="prevStep(4)">← Terug</button>
       <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
         ✓ Versturen &amp; bevestigen
       </button>
@@ -777,7 +729,7 @@
   // STEP LOGIC
   // ====================================================
   let currentStep = 1;
-  const totalSteps = 5;
+  const totalSteps = 4;
 
   function showStep(n) {
     for (let i = 1; i <= totalSteps; i++) {
@@ -809,7 +761,7 @@
   function nextStep(from) {
     if (validate(from)) {
       showStep(from + 1);
-      if (from + 1 === 5) initSignaturePad();
+      if (from + 1 === 4) initSignaturePad();
     }
   }
 
@@ -848,12 +800,7 @@
       });
     }
     if (step === 3) {
-      const fields = ['kenteken','datumBoete','bedrag','cjib','gemeente'];
-      fields.forEach(f => {
-        const val = document.getElementById(f).value.trim();
-        showErr(f, val === '');
-        if (val === '') ok = false;
-      });
+      // bezwaar is optioneel, geen validatie nodig
     }
     return ok;
   }
@@ -988,11 +935,6 @@
     fd.append('postcode', document.getElementById('postcode').value.trim());
     fd.append('woonplaats', document.getElementById('woonplaats').value.trim());
     fd.append('iban', document.getElementById('iban').value.trim());
-    fd.append('kenteken', document.getElementById('kenteken').value.trim());
-    fd.append('datumBoete', document.getElementById('datumBoete').value);
-    fd.append('bedrag', document.getElementById('bedrag').value.trim());
-    fd.append('cjib', document.getElementById('cjib').value.trim());
-    fd.append('gemeente', document.getElementById('gemeente').value.trim());
     fd.append('bezwaar', document.getElementById('bezwaar').value.trim());
     fd.append('timestamp', new Date().toLocaleString('nl-NL'));
 
@@ -1013,7 +955,7 @@
       }
       document.getElementById('loadingOverlay').classList.remove('visible');
       // Hide all steps & show success
-      for (let i = 1; i <= 5; i++) document.getElementById('step' + i).classList.remove('active');
+      for (let i = 1; i <= 4; i++) document.getElementById('step' + i).classList.remove('active');
       document.getElementById('successScreen').style.display = 'block';
       document.getElementById('progressSteps').style.display = 'none';
     } catch (err) {
