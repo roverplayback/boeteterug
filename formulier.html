@@ -557,8 +557,12 @@
     </div>
     <div class="card-body">
       <div class="photo-zone" id="photoZone">
-        <span class="photo-icon">📄</span>
-        <h3>Sleep uw bestand hierheen</h3>
+        <div style="display:flex;gap:20px;justify-content:center;align-items:flex-end;margin-bottom:16px">
+          <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
+          <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
+          <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
+        </div>
+        <h3>Sleep je boete hierheen</h3>
         <p>Of gebruik de knoppen hieronder om een foto te maken of een bestand te kiezen</p>
         <div id="photoPreview" class="photo-preview">
           <img id="previewImg" src="" alt="Preview">
@@ -646,37 +650,56 @@
       <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag. Geen resultaat = €0.</div>
     </div>
     <div class="card-body">
-      <div class="info-box">
-        Wij gaan pas aan de slag als jij akkoord gaat. Geen verrassingen, geen verborgen kosten.
+
+      <!-- Trust block -->
+      <div style="background:var(--bg);border-radius:8px;padding:16px 20px;margin-bottom:22px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.3px;margin-bottom:2px">Wat gebeurt er nu?</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Wij maken bezwaar voor je</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Jij hoeft niets te doen</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Geen resultaat = €0</div>
       </div>
 
+      <!-- Checkbox 1: kort + uitklap -->
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug.nl en machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.</span>
+        <span class="cb-label">
+          Ik ga akkoord en machtig BoeteTerug om mijn boete aan te vechten en mijn zaak te behandelen.
+          <span style="display:block;font-size:12px;color:var(--muted);margin-top:3px">Geen resultaat = €0 (no cure, no pay)</span>
+        </span>
       </label>
+      <div style="margin:-8px 0 16px 0;padding:0 4px">
+        <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--navy);cursor:pointer;text-decoration:underline;padding:4px 0">Bekijk volledige machtiging</button>
+        <div id="machtigingText" style="display:none;margin-top:10px;padding:14px 16px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
+          Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug en machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
+        </div>
+      </div>
 
+      <!-- Checkbox 2: simpel -->
       <label class="checkbox-field" id="cb2Wrap">
         <input type="checkbox" id="cb2" onchange="checkboxChanged()">
-        <span class="cb-label">Ik snap hoe de kosten werken: als wij winnen, ontvang ik de vergoeding voor juridische hulp op mijn eigen rekening en maak ik dit door aan BoeteTerug. Het boetebedrag zelf mag ik houden. Verlies je? Dan betaal je niks. <a href="index.html#kosten" style="color:var(--navy);font-weight:600;text-decoration:underline;">Meer uitleg →</a></span>
+        <span class="cb-label">
+          Ik begrijp dat dit no cure, no pay is: geen resultaat = €0. Als wij winnen, ontvang ik de vergoeding voor juridische hulp en maak ik dit door aan BoeteTerug. Het boetebedrag zelf mag ik houden.
+          <a href="index.html#kosten" style="display:inline-block;margin-top:3px;color:var(--navy);font-weight:600;text-decoration:underline;font-size:13px">Meer uitleg →</a>
+        </span>
       </label>
 
+      <!-- Handtekening -->
       <div class="field" style="margin-top:22px;">
-        <label>Handtekening *</label>
+        <label>Handtekening <span style="font-weight:400;color:var(--muted);font-size:12px">(verplicht, kost 5 seconden)</span></label>
         <div class="sig-wrap">
           <div class="sig-label-bar">
-            <span>Teken hieronder met uw vinger of muis</span>
+            <span>Teken met je vinger of muis</span>
             <button class="sig-clear" onclick="clearSignature()">Wis</button>
           </div>
           <canvas id="sigPad"></canvas>
         </div>
-        <div class="sig-hint">Teken met je vinger (telefoon) of muis.</div>
         <div class="field-error" id="err-sig">Zet je handtekening om te bevestigen</div>
       </div>
     </div>
     <div class="card-footer">
       <button class="btn btn-secondary" onclick="prevStep(4)">← Terug</button>
       <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
-        ✓ Ja, regel het voor mij, gratis
+        Start gratis bezwaar →
       </button>
     </div>
   </div>
@@ -704,6 +727,11 @@
   // Zie instructies onderaan dit bestand
   // ====================================================
   const APPS_SCRIPT_URL = 'VERVANG_DOOR_UW_APPS_SCRIPT_URL';
+
+  function toggleMachtiging() {
+    const el = document.getElementById('machtigingText');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
 
   // ====================================================
   // STEP LOGIC
