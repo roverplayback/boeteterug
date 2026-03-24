@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boete indienen — BoeteTerug.nl</title>
+<title>Boete indienen, BoeteTerug.nl</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -518,8 +518,10 @@
 <body>
 
 <header>
-  <div class="logo-mark">B</div>
-  <div class="logo-text">Boete<span>Terug</span>.nl</div>
+  <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
+    <div class="logo-mark">B</div>
+    <div class="logo-text">Boete<span>Terug</span>.nl</div>
+  </a>
 </header>
 
 <div class="progress-wrap">
@@ -576,7 +578,7 @@
     </div>
     <div class="card-footer">
       <div></div>
-      <button class="btn btn-primary" onclick="nextStep(1)">Volgende — bijna klaar →</button>
+      <button class="btn btn-primary" onclick="nextStep(1)">Volgende, bijna klaar →</button>
     </div>
   </div>
 
@@ -585,7 +587,7 @@
     <div class="card-header">
       <div class="step-label">Stap 2 van 4</div>
       <div class="card-title">Hoe kunnen wij je bereiken?</div>
-      <div class="card-subtitle">Vul je naam en e-mail in — meer hebben wij nu niet nodig.</div>
+      <div class="card-subtitle">Vul je naam en e-mail in, meer hebben wij nu niet nodig.</div>
     </div>
     <div class="card-body">
       <div class="field-row">
@@ -622,7 +624,7 @@
     <div class="card-header">
       <div class="step-label">Stap 3 van 4</div>
       <div class="card-title">Weet je waarom de boete onterecht is?</div>
-      <div class="card-subtitle">Vertel het ons — maar het hoeft niet. Ook zonder toelichting kijken wij wat we kunnen doen.</div>
+      <div class="card-subtitle">Vertel het ons, maar het hoeft niet. Ook zonder toelichting kijken wij wat we kunnen doen.</div>
     </div>
     <div class="card-body">
       <div class="field">
@@ -640,7 +642,7 @@
   <div id="step4" class="step">
     <div class="card-header">
       <div class="step-label">Stap 4 van 4</div>
-      <div class="card-title">Bijna klaar — geef je akkoord</div>
+      <div class="card-title">Bijna klaar, geef je akkoord</div>
       <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag. Geen resultaat = €0.</div>
     </div>
     <div class="card-body">
@@ -674,7 +676,7 @@
     <div class="card-footer">
       <button class="btn btn-secondary" onclick="prevStep(4)">← Terug</button>
       <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
-        ✓ Ja, regel het voor mij — gratis
+        ✓ Ja, regel het voor mij, gratis
       </button>
     </div>
   </div>
@@ -698,7 +700,7 @@
 
 <script>
   // ====================================================
-  // CONFIG — vervang door uw eigen Google Apps Script URL
+  // CONFIG, vervang door uw eigen Google Apps Script URL
   // Zie instructies onderaan dit bestand
   // ====================================================
   const APPS_SCRIPT_URL = 'VERVANG_DOOR_UW_APPS_SCRIPT_URL';
@@ -926,7 +928,7 @@
 
     try {
       if (APPS_SCRIPT_URL === 'VERVANG_DOOR_UW_APPS_SCRIPT_URL') {
-        // Demo mode — simulate success after 1.5s
+        // Demo mode, simulate success after 1.5s
         await new Promise(r => setTimeout(r, 1500));
       } else {
         await fetch(APPS_SCRIPT_URL, { method: 'POST', body: fd });
@@ -946,7 +948,7 @@
 
 <!--
 =======================================================
-  GOOGLE APPS SCRIPT INSTELLEN — LEES DIT
+  GOOGLE APPS SCRIPT INSTELLEN, LEES DIT
 =======================================================
 
 1. Ga naar script.google.com en maak een nieuw project aan.
