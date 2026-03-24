@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boete indienen, BoeteTerug.nl</title>
+<link rel="icon" type="image/png" href="assets/logos/logo_boete.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --accent: #EA822F;
+    --accent-light: #f0e0a8;
+    --bg: #f7f6f2;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --muted: #7a7a8c;
+    --border: #dddbd4;
+    --error: #c0392b;
+    --success: #1a7a4a;
+    --radius: 6px;
+    --shadow: 0 2px 20px rgba(15,31,61,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  header {
+    background: var(--navy);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  .logo-text span { color: var(--accent); }
+
+  /* Progress bar */
+  .progress-wrap {
+    background: var(--navy-mid);
+    padding: 0 24px 0;
+  }
+  .progress-steps {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    gap: 0;
+  }
+  .step-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    flex: 1;
+  }
+  .step-dot:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    z-index: 0;
+    transition: background 0.4s;
+  }
+  .step-dot.done:not(:last-child)::after {
+    background: var(--accent);
+  }
+  .dot-circle {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    z-index: 1;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .step-dot.active .dot-circle {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--navy);
+  }
+  .step-dot.done .dot-circle {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--navy);
+    font-size: 13px;
+  }
+  .dot-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .step-dot.active .dot-label { color: var(--accent); }
+  .step-dot.done .dot-label { color: rgba(255,255,255,0.7); }
+
+  /* Main card */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px 48px;
+  }
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 640px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .card-subtitle {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .card-body {
+    padding: 28px 32px;
+  }
+
+  /* Steps */
+  .step { display: none; }
+  .step.active { display: block; }
+
+  /* Form fields */
+  .field {
+    margin-bottom: 18px;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.1px;
+  }
+  .field label .opt {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--navy-mid);
+    box-shadow: 0 0 0 3px rgba(26,50,96,0.08);
+    background: var(--white);
+  }
+  .field input.error,
+  .field textarea.error {
+    border-color: var(--error);
+  }
+  .field-error {
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 4px;
+    display: none;
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .field textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+
+  /* Photo upload */
+  .photo-zone {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 36px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    background: var(--bg);
+  }
+  .photo-zone:hover { border-color: var(--navy-mid); background: #f0eeea; }
+  .photo-zone.has-file { border-color: var(--success); background: #edf7f2; }
+  .photo-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .photo-zone h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .photo-zone p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .photo-zone input[type=file] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer;
+    width: 100%; height: 100%;
+  }
+  .photo-preview {
+    margin-top: 16px;
+    display: none;
+  }
+  .photo-preview img {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  .photo-preview .file-name {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--success);
+    font-weight: 500;
+  }
+  .photo-btn-row {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .btn-camera {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-camera:hover { background: var(--navy-mid); }
+  .btn-camera.secondary {
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--navy);
+  }
+  .btn-camera.secondary:hover { border-color: var(--navy); }
+  .file-input-camera { display: none; }
+
+  /* Checkboxes */
+  .checkbox-field {
+    margin-bottom: 14px;
+    padding: 14px 16px;
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .checkbox-field:hover { border-color: var(--navy-mid); }
+  .checkbox-field input[type=checkbox] {
+    width: 18px; height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: var(--navy);
+    cursor: pointer;
+  }
+  .checkbox-field .cb-label {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .checkbox-field.required-cb { border-color: transparent; }
+  .checkbox-field.checked { border-color: var(--navy-mid); background: #eef1f7; }
+
+  /* Signature */
+  .sig-wrap {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    overflow: hidden;
+    position: relative;
+  }
+  .sig-label-bar {
+    padding: 8px 14px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sig-clear {
+    font-size: 12px;
+    color: var(--navy);
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+  }
+  canvas#sigPad {
+    display: block;
+    width: 100%;
+    height: 160px;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .sig-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* Navigation buttons */
+  .card-footer {
+    padding: 20px 32px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    gap: 12px;
+  }
+  .btn {
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    letter-spacing: 0.1px;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: white;
+    flex: 1;
+    max-width: 220px;
+    margin-left: auto;
+  }
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-secondary:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-submit {
+    background: var(--accent);
+    color: var(--navy);
+    flex: 1;
+    max-width: 260px;
+    margin-left: auto;
+  }
+  .btn-submit:hover { background: #d06820; transform: translateY(-1px); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Info box */
+  .info-box {
+    background: #eef2fa;
+    border-left: 3px solid var(--navy-mid);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* Success screen */
+  #successScreen {
+    display: none;
+    text-align: center;
+    padding: 52px 32px;
+  }
+  .success-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: white;
+  }
+  .success-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .success-text {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 380px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Loading overlay */
+  .loading-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(15,31,61,0.5);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .loading-overlay.visible { display: flex; }
+  .spinner {
+    width: 44px; height: 44px;
+    border: 4px solid rgba(255,255,255,0.2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  .loading-text { color: white; font-size: 14px; font-weight: 500; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    .card-header, .card-body, .card-footer { padding-left: 20px; padding-right: 20px; }
+    .field-row { grid-template-columns: 1fr; }
+    .card-title { font-size: 20px; }
+    .progress-steps { gap: 0; }
+    .dot-label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
+    <img src="assets/logos/logo_boete.png" alt="BoeteTerug" style="height:34px;width:auto;display:block">
+    <div class="logo-text">Boete<span>Terug</span>.nl</div>
+  </a>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-steps" id="progressSteps">
+    <div class="step-dot active" data-step="1">
+      <div class="dot-circle">1</div>
+      <div class="dot-label">Type boete</div>
+    </div>
+    <div class="step-dot" data-step="2">
+      <div class="dot-circle">2</div>
+      <div class="dot-label">Foto boete</div>
+    </div>
+    <div class="step-dot" data-step="3">
+      <div class="dot-circle">3</div>
+      <div class="dot-label">Gegevens</div>
+    </div>
+    <div class="step-dot" data-step="4">
+      <div class="dot-circle">4</div>
+      <div class="dot-label">Bezwaar</div>
+    </div>
+    <div class="step-dot" data-step="5">
+      <div class="dot-circle">5</div>
+      <div class="dot-label">Akkoord</div>
+    </div>
+  </div>
+</div>
+
+<main>
+<div class="card">
+
+  <!-- STAP 1: TYPE BOETE -->
+  <div id="step1" class="step active">
+    <div class="card-header">
+      <div class="step-label">Stap 1 van 5</div>
+      <div class="card-title">Wat voor zaak heb je?</div>
+      <div class="card-subtitle">Kies het type boete of maatregel dat je wilt aanvechten.</div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:12px">
+
+        <label id="type-fiets" onclick="selectBoeteType('fiets')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:64px;height:64px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Fietsdepot (gemeente)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Je fiets is weggehaald en je denkt dat de gemeente dat niet zomaar had mogen doen.</div>
+          </div>
+        </label>
+
+        <label id="type-mulder" onclick="selectBoeteType('mulder')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:64px;height:64px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Mulderboete (CJIB)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Te hard rijden, door rood of fout parkeren. Herkenbaar aan de letter M op de brief.</div>
+          </div>
+        </label>
+
+        <label id="type-parkeer" onclick="selectBoeteType('parkeer')" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg)">
+          <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:64px;height:64px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy)">Parkeerboete (gemeente)</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:2px">Naheffingsaanslag parkeerbelasting van de gemeente bij niet of te weinig betaald parkeergeld.</div>
+          </div>
+        </label>
+
+      </div>
+      <div class="field-error" id="err-boeteType" style="margin-top:8px">Kies een type boete om door te gaan</div>
+    </div>
+    <div class="card-footer">
+    </div>
+  </div>
+
+  <!-- STAP 2: FOTO -->
+  <div id="step2" class="step">
+    <div class="card-header">
+      <div class="step-label">Stap 2 van 5</div>
+      <div class="card-title">Maak een foto van je boete</div>
+      <div class="card-subtitle">Dat is alles wat je hoeft te doen. Wij regelen de rest.</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-zone" id="photoZone">
+        <div id="iconRow" style="display:flex;justify-content:center;margin-bottom:16px">
+          <img id="selectedTypeIcon" src="assets/images/mulderboete.png" alt="Boete" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
+        </div>
+        <h3 id="photoZoneTitle">Sleep je boete hierheen</h3>
+        <p id="photoZoneSub">Je kunt meerdere bestanden tegelijk uploaden. Of gebruik de knoppen hieronder.</p>
+        <div id="photoPreview" class="photo-preview" style="display:none">
+          <div id="fileName" style="font-size:14px;color:var(--success);font-weight:500;margin-top:4px"></div>
+        </div>
+      </div>
+      <div class="photo-btn-row">
+        <button class="btn-camera" onclick="document.getElementById('cameraInput').click()">
+          📷 Camera openen
+        </button>
+        <button class="btn-camera secondary" onclick="document.getElementById('fileInput').click()">
+          📂 Bestand kiezen
+        </button>
+      </div>
+      <input type="file" id="cameraInput" class="file-input-camera" accept="image/*" capture="environment">
+      <input type="file" id="fileInput" class="file-input-camera" accept="image/*,application/pdf" multiple>
+      <div class="field" style="margin-top:18px">
+        <label id="nummerLabel">CJIB-nummer *</label>
+        <input type="text" id="boeteNummer" placeholder="" autocomplete="off">
+        <div class="field-error" id="err-boeteNummer">Vul het nummer in</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Staat bovenaan de brief.</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" onclick="prevStep(2)">← Terug</button>
+      <button class="btn btn-primary" onclick="nextStep(2)">Volgende →</button>
+    </div>
+  </div>
+
+  <!-- STAP 3: PERSOONSGEGEVENS -->
+  <div id="step3" class="step">
+    <div class="card-header">
+      <div class="step-label">Stap 3 van 5</div>
+      <div class="card-title">Hoe kunnen wij je bereiken?</div>
+      <div class="card-subtitle">Hoe kunnen wij je bereiken?</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Voornaam *</label>
+          <input type="text" id="voornaam" autocomplete="given-name">
+          <div class="field-error" id="err-voornaam">Vul je voornaam in</div>
+        </div>
+        <div class="field">
+          <label>Achternaam *</label>
+          <input type="text" id="achternaam" autocomplete="family-name">
+          <div class="field-error" id="err-achternaam">Vul je achternaam in</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>E-mailadres *</label>
+        <input type="email" id="email" autocomplete="email">
+        <div class="field-error" id="err-email">Vul een geldig e-mailadres in</div>
+      </div>
+      <div class="field">
+        <label>Telefoonnummer <span class="opt">(optioneel)</span></label>
+        <input type="tel" id="telefoon" autocomplete="tel">
+      </div>
+      <div class="info-box" style="margin-top:8px">🔒 Je gegevens worden vertrouwelijk behandeld.</div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" onclick="prevStep(3)">← Terug</button>
+      <button class="btn btn-primary" onclick="nextStep(3)">Volgende →</button>
+    </div>
+  </div>
+
+  <!-- STAP 4: BEZWAAR -->
+  <div id="step4" class="step">
+    <div class="card-header">
+      <div class="step-label">Stap 4 van 5</div>
+      <div class="card-title">Wat was de situatie?</div>
+      <div class="card-subtitle">Beschrijf kort wat er is gebeurd. Dat helpt ons bij het bezwaar. Het hoeft niet, maar meer context is beter.</div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <label>Waarom bent u het niet eens met de boete? <span class="opt">(optioneel)</span></label>
+        <textarea id="bezwaar" placeholder="Bijv: het bord was niet zichtbaar, ik stond er maar even, of mijn fiets was helemaal niet verwaarloosd..."></textarea>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" onclick="prevStep(5)">← Terug</button>
+      <button class="btn btn-primary" onclick="nextStep(4)">Volgende →</button>
+    </div>
+  </div>
+
+  <!-- STAP 5: AKKOORD -->
+  <div id="step5" class="step">
+    <div class="card-header">
+      <div class="step-label">Stap 5 van 5</div>
+      <div class="card-title">Bijna klaar, geef je akkoord</div>
+      <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag. Geen resultaat = €0.</div>
+    </div>
+    <div class="card-body">
+
+      <!-- Trust block -->
+      <div style="background:var(--bg);border-radius:8px;padding:16px 20px;margin-bottom:22px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.3px;margin-bottom:2px">Wat gebeurt er nu?</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Wij maken bezwaar voor je</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Jij hoeft niets te doen</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Bij winst krijg jij het boetebedrag terug</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> De overheid vergoedt onze kosten</div>
+      </div>
+
+      <!-- Checkbox 1: kort + uitklap -->
+      <label class="checkbox-field" id="cb1Wrap">
+        <input type="checkbox" id="cb1" onchange="checkboxChanged()">
+        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" target="_blank" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> en machtig BoeteTerug om namens mij bezwaar te maken, (hoger) beroep in te stellen en mijn zaak te behandelen.</span>
+      </label>
+      <div style="margin:-6px 0 18px 4px">
+        <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px">
+          <span style="font-size:11px">🔍</span> Bekijk volledige machtiging
+        </button>
+        <div id="machtigingText" style="display:none;margin-top:8px;padding:12px 14px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
+          Ik machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen, verzoeken tot schadevergoeding en proceskostenvergoeding in te dienen, en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging heeft betrekking op het <span id="machtigingNummerLabel">CJIB-nummer, aanslagnummer of besluitnummer</span>: <strong id="machtigingNummer" style="color:var(--navy)">—</strong>. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
+        </div>
+      </div>
+
+      <!-- Checkbox 2: simpel -->
+      <label class="checkbox-field" id="cb2Wrap">
+        <input type="checkbox" id="cb2" onchange="checkboxChanged()">
+        <span class="cb-label">
+          Ik begrijp dat bij winst de overheid een vergoeding voor juridische kosten betaalt aan BoeteTerug en dat ik het boetebedrag zelf ontvang.
+          <a href="index.html#kosten" style="display:inline-block;margin-top:4px;color:var(--muted);font-size:12px;text-decoration:underline">Meer uitleg →</a>
+        </span>
+      </label>
+
+      <!-- Handtekening -->
+      <div class="field" style="margin-top:22px;">
+        <label>Zet je handtekening <span style="font-weight:400;color:var(--muted);font-size:12px">(verplicht)</span></label>
+        <div class="sig-wrap">
+          <div class="sig-label-bar">
+            <span>Teken met je vinger of muis</span>
+            <button class="sig-clear" onclick="clearSignature()">Wis</button>
+          </div>
+          <canvas id="sigPad"></canvas>
+        </div>
+        <div class="field-error" id="err-sig">Zet je handtekening om te bevestigen</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" onclick="prevStep(5)">← Terug</button>
+      <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
+        Start gratis bezwaar →
+      </button>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div id="successScreen">
+    <div class="success-icon">✓</div>
+    <div class="success-title">Gelukt! Wij gaan aan de slag.</div>
+    <div class="success-text">
+      Je boete is bij ons in goede handen. Je ontvangt binnen 1 werkdag een bevestiging per e-mail. Geen resultaat = €0.
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text">Uw aanvraag wordt verstuurd...</div>
+</div>
+
+<script>
+  // ====================================================
+  // CONFIG, vervang door uw eigen Google Apps Script URL
+  // ====================================================
+  // CONFIG — plak hier je Apps Script URL na deployen
+  // script.google.com → Implementeren → Webtoepassing
+  // ====================================================
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzR98s7FnKZUEqJMQREHBpDqSlgzrnFsAtNXjRdoPUal9frmw9rOsIfaCKgJldjyY-Vzg/exec';
+
+  // Pre-select type from URL param (e.g. formulier.html?type=fiets)
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('type');
+    if (t && ['mulder','parkeer','fiets'].includes(t)) {
+      selectBoeteType(t);
+    }
+  })();
+
+  function toggleMachtiging() {
+    const el = document.getElementById('machtigingText');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    updateMachtigingNummer();
+  }
+
+  function updateMachtigingNummer() {
+    const nr = document.getElementById('boeteNummer');
+    const span = document.getElementById('machtigingNummer');
+    if (nr && span) {
+      span.textContent = nr.value.trim() || '—';
+    }
+  }
+
+  // ====================================================
+  // BOETE TYPE SELECTIE
+  // ====================================================
+  window.selectedType = null; // 'mulder' | 'parkeer' | 'fiets'
+
+  const typeConfig = {
+    mulder:  { label: 'CJIB-nummer *',        placeholder: '' },
+    parkeer: { label: 'Aanslagnummer *',       placeholder: '' },
+    fiets:   { label: 'Besluitnummer *',       placeholder: '' },
+  };
+
+  function selectBoeteType(type) {
+    window.selectedType = type;
+    // Visual selection
+    ['mulder','parkeer','fiets'].forEach(t => {
+      const el = document.getElementById('type-' + t);
+      if (t === type) {
+        el.style.borderColor = 'var(--accent)';
+        el.style.background  = 'rgba(234,130,47,0.06)';
+      } else {
+        el.style.borderColor = 'var(--border)';
+        el.style.background  = 'var(--bg)';
+      }
+    });
+    // Update nummer field label + placeholder
+    const cfg = typeConfig[type];
+    document.getElementById('nummerLabel').textContent    = cfg.label;
+    document.getElementById('boeteNummer').placeholder   = cfg.placeholder;
+    // Update machtiging nummer label
+    const numLabelEl = document.getElementById('machtigingNummerLabel');
+    if (numLabelEl) numLabelEl.textContent = {'mulder':'CJIB-nummer','parkeer':'Aanslagnummer','fiets':'Besluitnummer'}[type] || type;
+    // Update icon in step 2
+    const icons = { mulder: 'mulderboete.png', parkeer: 'parkeerboete.png', fiets: 'fietsboete.png' };
+    document.getElementById('selectedTypeIcon').src = 'assets/images/' + icons[type];
+    // Hide error
+    document.getElementById('err-boeteType').style.display = 'none';
+    // Auto-advance to step 2
+    showStep(2);
+  }
+
+  // ====================================================
+  // STEP LOGIC
+  // ====================================================
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  function showStep(n) {
+    for (let i = 1; i <= totalSteps; i++) {
+      document.getElementById('step' + i).classList.remove('active');
+    }
+    document.getElementById('step' + n).classList.add('active');
+    currentStep = n;
+    updateProgress(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress(n) {
+    const dots = document.querySelectorAll('.step-dot');
+    dots.forEach((dot, i) => {
+      const s = i + 1;
+      dot.classList.remove('active', 'done');
+      if (s < n) {
+        dot.classList.add('done');
+        dot.querySelector('.dot-circle').textContent = '✓';
+      } else if (s === n) {
+        dot.classList.add('active');
+        dot.querySelector('.dot-circle').textContent = s;
+      } else {
+        dot.querySelector('.dot-circle').textContent = s;
+      }
+    });
+  }
+
+  function nextStep(from) {
+    if (validate(from)) {
+      showStep(from + 1);
+      if (from + 1 === 5) initSignaturePad();
+    }
+  }
+
+  function prevStep(from) {
+    showStep(from - 1);
+  }
+
+  // ====================================================
+  // VALIDATION
+  // ====================================================
+  function showErr(id, show) {
+    const el = document.getElementById(id);
+    const errEl = document.getElementById('err-' + id);
+    if (!el || !errEl) return;
+    if (show) { el.classList.add('error'); errEl.style.display = 'block'; }
+    else { el.classList.remove('error'); errEl.style.display = 'none'; }
+  }
+
+  function validate(step) {
+    let ok = true;
+    if (step === 1) {
+      if (!window.selectedType) {
+        document.getElementById('err-boeteType').style.display = 'block';
+        ok = false;
+      }
+    }
+    if (step === 2) {
+      if (!window.uploadedFiles || !window.uploadedFiles.length) {
+        document.getElementById('photoZone').style.border = '2px dashed var(--error)';
+        alert('Upload eerst een foto of scan van je boete.');
+        ok = false;
+      }
+      const nr = document.getElementById('boeteNummer').value.trim();
+      if (!nr) {
+        showErr('boeteNummer', true);
+        ok = false;
+      } else {
+        showErr('boeteNummer', false);
+      }
+    }
+    if (step === 3) {
+      const fields = ['voornaam','achternaam','email'];
+      fields.forEach(f => {
+        const val = document.getElementById(f).value.trim();
+        let bad = val === '';
+        if (f === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) bad = true;
+        showErr(f, bad);
+        if (bad) ok = false;
+      });
+    }
+    if (step === 4) {
+      // bezwaar is optioneel
+    }
+    return ok;
+  }
+
+  // ====================================================
+  // PHOTO UPLOAD
+  // ====================================================
+  window.uploadedFiles = [];
+
+  function handleFiles(files) {
+    if (!files || !files.length) return;
+    window.uploadedFiles = Array.from(files);
+    const zone = document.getElementById('photoZone');
+    zone.classList.add('has-file');
+    zone.style.border = '';
+
+    // Keep icon visible, just update title
+    const countText = window.uploadedFiles.length === 1
+      ? '1 bestand geselecteerd ✓'
+      : `${window.uploadedFiles.length} bestanden geselecteerd ✓`;
+    document.getElementById('photoZoneTitle').textContent = countText;
+    document.getElementById('photoZoneSub').style.display = 'none';
+
+    const preview = document.getElementById('photoPreview');
+    preview.style.display = 'block';
+    document.getElementById('fileName').textContent = window.uploadedFiles.map(f => f.name).join(', ');
+  }
+
+  document.getElementById('cameraInput').addEventListener('change', e => handleFiles(e.target.files));
+  document.getElementById('fileInput').addEventListener('change',   e => handleFiles(e.target.files));
+
+  // Drag & drop
+  const zone = document.getElementById('photoZone');
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.style.borderColor = 'var(--navy)'; });
+  zone.addEventListener('dragleave', () => { zone.style.borderColor = ''; });
+  zone.addEventListener('drop',      e => { e.preventDefault(); handleFiles(e.dataTransfer.files); });
+
+  // ====================================================
+  // CHECKBOX STYLING
+  // ====================================================
+  function checkboxChanged() {
+    ['cb1','cb2'].forEach(id => {
+      const cb = document.getElementById(id);
+      const wrap = document.getElementById(id + 'Wrap');
+      if (cb.checked) wrap.classList.add('checked');
+      else wrap.classList.remove('checked');
+    });
+  }
+
+  // ====================================================
+  // SIGNATURE PAD
+  // ====================================================
+  let sigCanvas, sigCtx, signing = false, hasSig = false;
+
+  function initSignaturePad() {
+    sigCanvas = document.getElementById('sigPad');
+    sigCtx = sigCanvas.getContext('2d');
+    // Set canvas resolution
+    const rect = sigCanvas.getBoundingClientRect();
+    sigCanvas.width = rect.width * window.devicePixelRatio;
+    sigCanvas.height = rect.height * window.devicePixelRatio;
+    sigCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    sigCtx.strokeStyle = '#0f1f3d';
+    sigCtx.lineWidth = 2.2;
+    sigCtx.lineCap = 'round';
+    sigCtx.lineJoin = 'round';
+
+    sigCanvas.addEventListener('mousedown', startSig);
+    sigCanvas.addEventListener('mousemove', drawSig);
+    sigCanvas.addEventListener('mouseup', endSig);
+    sigCanvas.addEventListener('mouseleave', endSig);
+    sigCanvas.addEventListener('touchstart', e => { e.preventDefault(); startSig(e.touches[0]); }, { passive: false });
+    sigCanvas.addEventListener('touchmove', e => { e.preventDefault(); drawSig(e.touches[0]); }, { passive: false });
+    sigCanvas.addEventListener('touchend', endSig);
+  }
+
+  function getPos(e) {
+    const r = sigCanvas.getBoundingClientRect();
+    return { x: (e.clientX || e.pageX) - r.left, y: (e.clientY || e.pageY) - r.top };
+  }
+
+  function startSig(e) {
+    signing = true;
+    const p = getPos(e);
+    sigCtx.beginPath();
+    sigCtx.moveTo(p.x, p.y);
+  }
+
+  function drawSig(e) {
+    if (!signing) return;
+    const p = getPos(e);
+    sigCtx.lineTo(p.x, p.y);
+    sigCtx.stroke();
+    hasSig = true;
+  }
+
+  function endSig() { signing = false; }
+
+  function clearSignature() {
+    if (sigCtx) {
+      sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+      hasSig = false;
+    }
+  }
+
+  // ====================================================
+  // SUBMIT — stuurt JSON met base64 naar Apps Script
+  // ====================================================
+  async function submitForm() {
+    const cb1 = document.getElementById('cb1').checked;
+    const cb2 = document.getElementById('cb2').checked;
+    if (!cb1 || !cb2) {
+      alert('Vink beide verklaringen aan om door te gaan.');
+      return;
+    }
+    if (!hasSig) {
+      document.getElementById('err-sig').style.display = 'block';
+      return;
+    }
+    document.getElementById('err-sig').style.display = 'none';
+    document.getElementById('loadingOverlay').classList.add('visible');
+
+    try {
+      // Handtekening → base64
+      const sigDataUrl  = sigCanvas.toDataURL('image/png');
+      const sigBase64   = sigDataUrl.split(',')[1];
+
+      // Boetebestanden → base64 array
+      const boeteFiles = window.uploadedFiles || [];
+      const boeteData  = await Promise.all(boeteFiles.map(file =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload  = () => resolve({
+            naam:   file.name,
+            mime:   file.type || 'image/jpeg',
+            data:   reader.result.split(',')[1],
+          });
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        })
+      ));
+      const bestandsnamen = boeteFiles.map(f => f.name).join(', ') || 'onbekend';
+      const boeteNummer = document.getElementById('boeteNummer').value.trim();
+
+      const payload = {
+        boeteType:   window.selectedType || '',
+        voornaam:    document.getElementById('voornaam').value.trim(),
+        achternaam:  document.getElementById('achternaam').value.trim(),
+        email:       document.getElementById('email').value.trim(),
+        telefoon:    document.getElementById('telefoon').value.trim(),
+        bezwaar:     document.getElementById('bezwaar').value.trim(),
+        bestandsnamen,
+        boeteNummer,
+        boeteFiles:  boeteData,
+        sigBase64,
+        timestamp:   new Date().toISOString(),
+      };
+
+      // Apps Script vereist no-cors (CORS headers ontbreken bij redirects)
+      // We sturen en gaan ervan uit dat het gelukt is
+      await fetch(APPS_SCRIPT_URL, {
+        method:  'POST',
+        mode:    'no-cors',
+        body:    JSON.stringify(payload),
+      });
+
+      document.getElementById('loadingOverlay').classList.remove('visible');
+
+      // Succes
+      for (let i = 1; i <= 5; i++) document.getElementById('step' + i).classList.remove('active');
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('progressSteps').style.display = 'none';
+
+    } catch (err) {
+      document.getElementById('loadingOverlay').classList.remove('visible');
+      alert('Verbinding mislukt. Controleer je internetverbinding en probeer het opnieuw.');
+      console.error(err);
+    }
+  }
+</script>
+
+<!--
+=======================================================
+  GOOGLE APPS SCRIPT INSTELLEN, LEES DIT
+=======================================================
+
+1. Ga naar script.google.com en maak een nieuw project aan.
+
+2. Plak de onderstaande code in het scriptvenster:
+
+function doPost(e) {
+  const folder = DriveApp.getFolderById('VERVANG_DOOR_FOLDER_ID');
+  const sheet  = SpreadsheetApp.openById('VERVANG_DOOR_SHEET_ID').getActiveSheet();
+
+  const data = e.parameters;
+  const naam  = (data.voornaam?.[0] || '') + ' ' + (data.achternaam?.[0] || '');
+  const ts    = data.timestamp?.[0] || new Date().toLocaleString('nl-NL');
+
+  // Sla gegevens op in Sheet
+  sheet.appendRow([
+    ts, naam, data.email?.[0], data.telefoon?.[0],
+    data.adres?.[0], data.postcode?.[0], data.woonplaats?.[0], data.iban?.[0],
+    data.kenteken?.[0], data.datumBoete?.[0], data.bedrag?.[0],
+    data.cjib?.[0], data.gemeente?.[0], data.bezwaar?.[0]
+  ]);
+
+  // Maak submap per inzending
+  const sub = folder.createFolder(ts.replace(/[:/]/g,'_') + '_' + naam);
+
+  // Sla foto + handtekening op
+  ['boeteFoto','handtekening'].forEach(key => {
+    const blobs = e.files ? e.files[key] : null;
+    if (blobs) sub.createFile(blobs);
+  });
+
+  return ContentService
+    .createTextOutput(JSON.stringify({status:'ok'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+3. Klik op "Implementeren" → "Nieuwe implementatie"
+   - Type: Webtoepassing
+   - Uitvoeren als: Uzelf
+   - Toegang: Iedereen
+
+4. Kopieer de URL en plak hem bovenin dit HTML-bestand bij:
+   const APPS_SCRIPT_URL = '...';
+
+=======================================================
+-->
+</body>
+</html>
