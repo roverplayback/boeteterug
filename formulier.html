@@ -696,7 +696,7 @@
     <div class="card-header">
       <div class="step-label">Stap 5 van 5</div>
       <div class="card-title">Bijna klaar, geef je akkoord</div>
-      <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag. Geen resultaat = €0.</div>
+      <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag.</div>
     </div>
     <div class="card-body">
 
@@ -712,23 +712,23 @@
       <!-- Checkbox 1: kort + uitklap -->
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" target="_blank" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> en machtig BoeteTerug om namens mij bezwaar te maken, (hoger) beroep in te stellen en mijn zaak te behandelen.</span>
+        <span class="cb-label">Ik ga akkoord met de <a href="#" target="_blank" onclick="var w=window.open('index.html','_blank');w.addEventListener('load',function(){w.showPage&&w.showPage('av');});return false;" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> en machtig BoeteTerug om namens mij bezwaar te maken, (hoger) beroep in te stellen en mijn zaak te behandelen.</span>
       </label>
       <div style="margin:-6px 0 18px 4px">
         <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px">
           <span style="font-size:11px">🔍</span> Bekijk volledige machtiging
         </button>
-        <div id="machtigingText" style="display:none;margin-top:8px;padding:12px 14px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
+        <div id="machtigingText" onclick="toggleMachtiging()" style="display:none;margin-top:8px;padding:12px 14px;background:#fff;border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65;cursor:pointer">
           Ik machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen, verzoeken tot schadevergoeding en proceskostenvergoeding in te dienen, en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging heeft betrekking op het <span id="machtigingNummerLabel">CJIB-nummer, aanslagnummer of besluitnummer</span>: <strong id="machtigingNummer" style="color:var(--navy)">—</strong>. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
         </div>
       </div>
 
       <!-- Checkbox 2: simpel -->
       <label class="checkbox-field" id="cb2Wrap">
-        <input type="checkbox" id="cb2" onchange="checkboxChanged()">
+        <input type="checkbox" id="cb2" onchange="checkboxChanged(); closeMachtiging();">
         <span class="cb-label">
           Ik begrijp dat bij winst de overheid een vergoeding voor juridische kosten betaalt aan BoeteTerug en dat ik het boetebedrag zelf ontvang.
-          <a href="index.html#kosten" style="display:inline-block;margin-top:4px;color:var(--muted);font-size:12px;text-decoration:underline">Meer uitleg →</a>
+          <a href="#" target="_blank" onclick="var w=window.open('index.html','_blank');w.addEventListener('load',function(){w.showPage&&w.showPage('kosten');});return false;" style="display:inline-block;margin-top:4px;color:var(--muted);font-size:12px;text-decoration:underline">Meer uitleg →</a>
         </span>
       </label>
 
@@ -758,7 +758,7 @@
     <div class="success-icon">✓</div>
     <div class="success-title">Gelukt! Wij gaan aan de slag.</div>
     <div class="success-text">
-      Je boete is bij ons in goede handen. Je ontvangt binnen 1 werkdag een bevestiging per e-mail. Geen resultaat = €0.
+      Je boete is bij ons in goede handen. Je ontvangt binnen 1 werkdag een bevestiging per e-mail.
     </div>
   </div>
 
@@ -792,6 +792,11 @@
     const el = document.getElementById('machtigingText');
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
     updateMachtigingNummer();
+  }
+
+  function closeMachtiging() {
+    const el = document.getElementById('machtigingText');
+    if (el) el.style.display = 'none';
   }
 
   function updateMachtigingNummer() {

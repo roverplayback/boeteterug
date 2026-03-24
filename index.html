@@ -518,13 +518,33 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 
 <!-- KOSTENBELEID -->
 <div id="page-kosten" class="page">
-  <section style="background:var(--navy);padding:40px 24px;text-align:center"><div class="container"><h1 style="color:#fff;font-size:28px">Kostenbeleid</h1><p style="color:rgba(255,255,255,.6);margin-top:8px;font-size:14px">Transparantie over onze werkwijze</p></div></section>
+  <section style="background:var(--navy);padding:40px 24px;text-align:center"><div class="container"><h1 style="color:#fff;font-size:28px">Kostenbeleid</h1><p style="color:rgba(255,255,255,.6);margin-top:8px;font-size:14px">Transparant en zonder verborgen kosten</p></div></section>
   <section class="section"><div class="container"><div class="legal-content">
-    <h2>100% gratis</h2><p>BoeteTerug.nl werkt volledig op basis van 100% gratis. Je betaalt <strong>nooit iets uit eigen zak</strong>. Verliezen wij? Dan brengen wij je niets in rekening. Winnen wij? Dan betaalt de overheid onze vergoeding.</p>
-    <h2>Hoe zijn wij gefinancierd?</h2><p>Wanneer een boete onterecht wordt bevonden, is de overheid op grond van het Besluit proceskosten bestuursrecht verplicht de kosten van juridische bijstand te vergoeden. Deze proceskostenvergoeding vormt de basis van onze inkomsten. Wij verdienen uitsluitend wanneer wij resultaat boeken voor je.</p>
-    <h2>De situatie in de praktijk</h2><p>De overheid maakt de proceskostenvergoeding over op je eigen rekening. Dit bedrag is bestemd als vergoeding voor de juridische bijstand van BoeteTerug.nl. Je ontvangt hierover van ons een factuur, waarna je het ontvangen bedrag naar ons overmaakt. <strong>Het boetebedrag zelf mag je houden.</strong></p><p>Zodra je de vergoeding hebt ontvangen, stuurt BoeteTerug.nl je een factuur ter hoogte van dat bedrag. <strong>Het bedrag dat je betaalt is nooit hoger dan wat je van de overheid heeft ontvangen.</strong></p>
-    <h2>Zijn er verborgen kosten?</h2><p>Nee. Geen verborgen kosten, geen abonnementskosten, geen administratiekosten.</p>
-    <h2>Samenvatting</h2><ul><li>Gratis bij verlies, je betaalt niets</li><li>Bij winst, je ontvangt proceskostenvergoeding van de overheid</li><li>Je maakt dit bedrag door aan BoeteTerug.nl</li><li>Per saldo, je betaalt nooit iets uit eigen zak</li></ul>
+    <h2>Hoe werkt het?</h2>
+    <p>Bezwaar maken tegen een verkeersboete kost je bij BoeteTerug niks. Echt niks. Je betaalt alleen als wij winnen, en zelfs dan betaal jij het niet zelf.</p>
+
+    <h2>Geen resultaat, geen kosten</h2>
+    <p>Lukt het niet om de boete aan te vechten? Dan ontvang je geen factuur van ons. Geen kosten, geen administratiekosten, geen gedoe. Het risico ligt volledig bij ons.</p>
+
+    <h2>Winnen wij? Dan betaalt de overheid</h2>
+    <p>Als wij succesvol bezwaar maken, is de overheid wettelijk verplicht een vergoeding te betalen voor de juridische hulp die je hebt ontvangen. Die vergoeding is gebaseerd op het Besluit proceskosten bestuursrecht en wordt rechtstreeks door het ministerie uitbetaald.</p>
+    <p>Die vergoeding komt op <strong>jouw</strong> rekening. Dat bedrag is bestemd voor BoeteTerug, als vergoeding voor onze werkzaamheden. Je maakt het door naar ons zodra je het hebt ontvangen. <strong>Het boetebedrag zelf mag je houden.</strong></p>
+    <p>Maak je zelf bezwaar zonder juridische hulp? Dan heb je geen recht op deze vergoeding.</p>
+
+    <h2>Waarom is dit voordelig voor jou?</h2>
+    <ul>
+      <li><strong>Geen financieel risico.</strong> Je betaalt nooit iets uit eigen zak.</li>
+      <li><strong>Volledig transparant.</strong> Je weet vooraf precies hoe het werkt.</li>
+      <li><strong>Juridische hulp zonder voorschot.</strong> Wij gaan aan de slag zonder dat jij eerst iets hoeft te betalen.</li>
+    </ul>
+
+    <h2>Samenvatting</h2>
+    <ul>
+      <li>Verlies je? Dan betaal je niks.</li>
+      <li>Win je? Dan ontvangt de overheid de vergoeding voor onze juridische hulp op jouw rekening. Dat bedrag maak je door aan BoeteTerug.</li>
+      <li>Het boetebedrag zelf is voor jou.</li>
+      <li>Geen verborgen kosten, nooit.</li>
+    </ul>
   </div></div></section>
 </div>
 
@@ -537,7 +557,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
           <img src="assets/logos/logo_boete.png" alt="BoeteTerug" style="height:36px;width:auto;display:block">
           <div class="logo-text">Boete<span>Terug</span>.nl</div>
         </div>
-        <p>Gratis bezwaar maken tegen je verkeers- of parkeerboete. 100% gratis, </p>
+        <p>Gratis bezwaar maken tegen je verkeers- of parkeerboete.</p>
       </div>
       <div class="footer-col">
         <h4>Navigatie</h4>
@@ -567,7 +587,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
       <span></span>
       <div class="footer-legal">
         <button onclick="showPage('av')">Algemene voorwaarden</button>
-        <button onclick="showPage('privacy')">Privacybeleid</button>eid</button>
+        <button onclick="showPage('privacy')">Privacybeleid</button>
+        <button onclick="showPage('kosten')">Kostenbeleid</button>
       </div>
     </div>
   </div>
@@ -586,6 +607,13 @@ function showPage(id) {
   const m = document.getElementById('navMobile');
   if (m) m.style.display = 'none';
 }
+
+// Handle ?page= URL parameter on load
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const pg = params.get('page');
+  if (pg) showPage(pg);
+})();
 
 function toggleMobile() {
   const m = document.getElementById('navMobile');
