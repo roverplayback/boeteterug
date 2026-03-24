@@ -99,7 +99,7 @@ h3{font-size:clamp(17px,2.5vw,22px);font-weight:600}
 .info-card p:last-child{margin-bottom:0}
 
 /* TYPES */
-.types-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
 .type-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 24px;transition:box-shadow .2s,transform .2s}
 .type-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
 .type-icon{font-size:32px;margin-bottom:14px;display:flex;align-items:center;justify-content:center}
@@ -226,7 +226,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">✓ Gratis &nbsp;·&nbsp; 100% gratis &nbsp;·&nbsp; Geen verborgen kosten</div>
+      <div class="hero-badge">✓ 100% gratis &nbsp;·&nbsp; Geen verborgen kosten &nbsp;·&nbsp; Geen gedoe</div>
       <h1>Boete of fiets weggehaald? Wij regelen het. <em>Gratis.</em></h1>
       <p class="lead">Upload een foto van je boete en wij doen de rest. Bij winst krijg je het hele boetebedrag terug.</p>
       <div class="hero-btns">
@@ -270,7 +270,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
         <h2>Drie soorten zaken die wij aanvechten</h2>
         <p class="lead" style="margin-top:12px">Controleer of je zaak in aanmerking komt. Twijfel je? Neem gerust contact op.</p>
       </div>
-      <div class="types-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="types-grid">
         <div class="type-card">
           <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:110px;height:110px;object-fit:contain;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;filter:drop-shadow(0 2px 8px rgba(15,31,61,0.18))">
           <h3>Mulderboete (CJIB)</h3>
@@ -347,7 +347,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     <div class="container">
       <div class="section-tag">Stap voor stap</div>
       <h1>Hoe werkt het?</h1>
-      <p class="lead">Jij uploadt je boete. Wij doen de rest. Meer hoef je niet te weten.</p>
+      <p class="lead">Jij uploadt je boete. Wij doen de rest.</p>
     </div>
   </section>
   <section class="section" style="background:var(--white)">
@@ -356,32 +356,32 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
         <div class="hiw-step">
           <div class="hiw-step-num">1</div>
           <div class="hiw-step-body">
-            <h3>Foto en gegevens</h3>
-            <p>Maak een foto van je boete en vul je naam en e-mail in. Dat is alles. Duurt 3 minuten, ook op je telefoon.</p>
+            <h3>Foto maken en indienen</h3>
+            <p>Maak een foto van je boete en vul je naam en e-mailadres in. Dat is het. Duurt 3 minuten, ook gewoon op je telefoon. Je kunt ook aangeven waarom je het er niet mee eens bent, maar dat hoeft niet.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">2</div>
           <div class="hiw-step-body">
-            <h3>Wij kijken of er iets klopt</h3>
-            <p>Wij bekijken je boete op fouten: verkeerd kenteken, fout tijdstip, onduidelijk bord, slechte procedure. Als er iets niet klopt, maken wij bezwaar.</p>
+            <h3>Wij checken je boete</h3>
+            <p>Wij kijken of er fouten in zitten: verkeerd kenteken, fout tijdstip, onduidelijk bord, of een fout in de procedure. Als er iets niet klopt, maken wij bezwaar. Zonder dat jij er iets voor hoeft te doen.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">3</div>
           <div class="hiw-step-body">
-            <h3>Wij regelen alles</h3>
-            <p>Wij schrijven het bezwaar en sturen het op naar de juiste instantie. Jij hoeft zelf geen brief te schrijven of te bellen.</p>
+            <h3>Wij sturen het bezwaar op</h3>
+            <p>Wij schrijven het bezwaarschrift en sturen het op naar de gemeente, het CJIB of het OM. Jij hoeft zelf niks te schrijven of te bellen.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
         <div class="hiw-step">
           <div class="hiw-step-num">4</div>
           <div class="hiw-step-body">
-            <h3>Wachten op de uitslag</h3>
-            <p>Wij volgen je zaak en houden je per mail op de hoogte. Gemiddeld duurt het 6 tot 16 weken. Je hoeft zelf nergens achteraan.</p>
+            <h3>Wachten op uitslag</h3>
+            <p>Wij volgen je zaak en houden je per mail op de hoogte. Gemiddeld duurt het 6 tot 16 weken. Je hoeft zelf nergens achteraan te gaan.</p>
           </div>
         </div>
         <div class="hiw-connector"></div>
@@ -389,7 +389,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
           <div class="hiw-step-num">5</div>
           <div class="hiw-step-body">
             <h3>Uitslag</h3>
-            <p>Winnen wij? Dan krijg je het boetebedrag terug. De overheid betaalt onze vergoeding, niet jij. Verliezen wij? Dan betaal je niks.</p>
+            <p>Winnen wij? Dan krijg je het boetebedrag terug. De overheid betaalt onze vergoeding. Verliezen wij? Dan betaal je niks. Geen factuur, geen gedoe.</p>
           </div>
         </div>
       </div>
@@ -410,7 +410,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     <div class="container">
       <div class="section-tag">Veelgestelde vragen</div>
       <h1 style="color:#fff;margin-bottom:14px">Veelgestelde vragen</h1>
-      <p class="lead" style="color:rgba(255,255,255,.65);margin:0 auto">Kort en duidelijk. Meer vragen? Stuur ons een bericht.</p>
+      <p class="lead" style="color:rgba(255,255,255,.65);margin:0 auto">Kort en duidelijk. Meer vragen? Mail naar info@boeteterug.nl.</p>
     </div>
   </section>
   <section class="section" style="background:var(--white)">
@@ -418,32 +418,31 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
       <div class="faq-cat">Over BoeteTerug</div>
       <div class="faq-list">
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is het echt gratis? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Ja, 100% gratis. Als wij winnen, betaalt de overheid onze vergoeding. Verlies je? Dan betaal je niks. Geen verborgen kosten, geen gedoe.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe verdienen jullie dan geld? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij een boete succesvol aanvechten, is de overheid verplicht onze kosten te vergoeden. Dat is onze inkomst. Wij verdienen dus alleen als het ook echt wat oplevert voor jou.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Welke boetes pakken jullie aan? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner"><strong>Mulderboete (CJIB)</strong> — herkenbaar aan de letter M op de brief. Denk aan te hard rijden of door rood.<br><br><strong>Parkeerboete (gemeente)</strong> — te weinig parkeergeld betaald.<br><br><strong>Fietsdepot (gemeente)</strong> — je fiets is weggehaald en je denkt dat dat niet mocht.<br><br>Twijfel je? Stuur ons gewoon een bericht.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe groot is de kans dat het lukt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">1 op de 3 boetes blijkt onterecht. Wij kijken of er fouten in zitten voordat wij bezwaar indienen. Geen garantie, maar wij gaan alleen verder als we een kans zien.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe verdienen jullie geld? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij winnen, is de overheid verplicht onze juridische kosten te vergoeden. Dat is onze inkomst. Wij verdienen dus alleen als het ook echt wat oplevert voor jou.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Welke boetes pakken jullie aan? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner"><strong>Mulderboete (CJIB)</strong> — herkenbaar aan de letter M op de brief. Denk aan te hard rijden of door rood.<br><br><strong>Parkeerboete (gemeente)</strong> — te weinig parkeergeld betaald.<br><br><strong>Fietsdepot</strong> — je fiets is weggehaald en je denkt dat dat niet mocht.<br><br>Twijfel je? Stuur een mail naar info@boeteterug.nl.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe groot is de kans dat het lukt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">1 op de 3 boetes blijkt onterecht. Wij kijken eerst of er fouten in zitten voordat wij bezwaar indienen.</div></div></div>
       </div>
 
       <div class="faq-cat">Kosten</div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ik heb geld ontvangen op mijn rekening, wat nu? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij winnen, maakt de overheid een vergoeding voor onze juridische hulp over op jouw rekening. Dat bedrag is voor ons, niet voor jou. Je maakt het door aan BoeteTerug. Het boetebedrag zelf mag je houden. <a href="#" onclick="showPage('kosten')" style="color:var(--navy);font-weight:600">Meer uitleg →</a></div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat als mijn bezwaar wordt afgewezen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dan betaal je niks. Geen factuur, geen kosten. Afhankelijk van de zaak kijken we of we in beroep kunnen gaan, ook dat is gratis.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Moet ik de boete betalen terwijl het bezwaar loopt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Ja, betaal de boete gewoon. Dit voorkomt dat hij hoger wordt. Als wij winnen, krijg je het terug.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ik heb geld ontvangen op mijn rekening, wat nu? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij winnen, maakt de overheid een vergoeding voor onze juridische hulp over op jouw rekening. Dat bedrag stuur je door aan BoeteTerug. Het boetebedrag zelf mag je houden. <a href="#" onclick="showPage('kosten')" style="color:var(--navy);font-weight:600">Meer uitleg →</a></div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat als mijn bezwaar wordt afgewezen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dan betaal je niks. Geen factuur, geen kosten. We kijken of we in beroep kunnen, ook dat is gratis.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Moet ik de boete betalen terwijl het bezwaar loopt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Ja, betaal de boete gewoon. Zo voorkom je dat hij hoger wordt. Als wij winnen, krijg je het terug.</div></div></div>
       </div>
 
-      <div class="faq-cat">De procedure</div>
+      <div class="faq-cat">Procedure</div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe lang duurt het? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dat verschilt per soort boete. Gemiddeld 6 tot 16 weken. Wij houden je per mail op de hoogte.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat moet ik zelf doen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Alleen het formulier invullen en je boete uploaden. De rest doen wij.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe snel moet ik indienen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Je hebt 6 weken na de datum op de boete. Doe het zo snel mogelijk, dan hebben wij genoeg tijd.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe lang duurt het? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dat verschilt. Gemiddeld 6 tot 16 weken. Wij houden je per mail op de hoogte bij elke stap.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat moet ik zelf doen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Alleen het formulier invullen en je boete uploaden. De rest doen wij: analyse, bezwaar, contact met instanties.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Hoe snel moet ik indienen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Je hebt 6 weken na de datum op de boete. Doe het zo snel mogelijk zodat wij genoeg tijd hebben.</div></div></div>
       </div>
     </div>
   </section>
   <section class="cta-banner">
     <div class="container">
       <h2>Nog vragen?</h2>
-      <p>Of dien direct je boete in. Duurt 3 minuten.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="showPage('contact')">Contact opnemen</button>
+      <p>Mail naar <a href="mailto:info@boeteterug.nl" style="color:var(--navy);font-weight:600">info@boeteterug.nl</a> of dien direct je boete in.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px">
         <button class="btn btn-accent" onclick="window.location.href='formulier.html'">Boete indienen →</button>
       </div>
     </div>
@@ -460,33 +459,20 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     </div>
   </section>
   <section class="section" style="background:var(--white)">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h2>Hoe kun je ons bereiken?</h2>
-          <p class="lead">Heb je al een boete ingediend? Vermeld dan je naam en kenteken, zodat wij je zaak snel kunnen terugvinden.</p>
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div><h4>E-mail</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="630a0d050c23010c06170617061116044d0d0f">[email&#160;protected]</a></p></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div><h4>Reactietijd</h4><p>Binnen 1 werkdag</p></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📋</div>
-            <div><h4>Boete indienen?</h4><p><button onclick="window.location.href='formulier.html'" style="background:none;border:none;color:var(--accent);font-weight:600;font-size:15px;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif">Gebruik ons formulier →</button></p></div>
-          </div>
-        </div>
-        <div class="contact-card">
-          <h3>Stuur ons een bericht</h3>
-          <div class="field"><label>Uw naam</label><input type="text" placeholder="Jan de Vries"></div>
-          <div class="field"><label>E-mailadres</label><input type="email" placeholder="jan@example.nl"></div>
-          <div class="field"><label>Onderwerp</label><input type="text" placeholder="Vraag over mijn ingediende boete"></div>
-          <div class="field"><label>Uw bericht</label><textarea placeholder="Beschrijf uw vraag zo duidelijk mogelijk..."></textarea></div>
-          <button class="btn btn-primary" style="width:100%" onclick="alert('Bedankt! Wij reageren binnen 1 werkdag.')">Bericht versturen</button>
-          <p style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center">Wij reageren binnen 1 werkdag. Uw gegevens worden vertrouwelijk behandeld.</p>
-        </div>
+    <div class="container" style="max-width:560px">
+      <h2 style="margin-bottom:20px">Gewoon mailen</h2>
+      <p class="lead" style="margin-bottom:32px">Heb je een vraag? Stuur een mail naar <a href="mailto:info@boeteterug.nl" style="color:var(--accent);font-weight:600">info@boeteterug.nl</a>. We reageren binnen 1 werkdag.</p>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div><h4>E-mail</h4><p><a href="mailto:info@boeteterug.nl" style="color:var(--navy);font-weight:500">info@boeteterug.nl</a></p></div>
+      </div>
+      <div class="contact-item" style="margin-top:16px">
+        <div class="contact-icon">🕐</div>
+        <div><h4>Reactietijd</h4><p>Binnen 1 werkdag</p></div>
+      </div>
+      <div class="contact-item" style="margin-top:16px">
+        <div class="contact-icon">📋</div>
+        <div><h4>Boete indienen?</h4><p><button onclick="window.location.href='formulier.html'" style="background:none;border:none;color:var(--accent);font-weight:600;font-size:15px;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif">Gebruik ons formulier →</button></p></div>
       </div>
     </div>
   </section>
@@ -563,12 +549,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
         <h4>Contact</h4>
         <ul>
           <li><button onclick="showPage('contact')"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="30595e565f70525f55445544554245571e5e5c">[email&#160;protected]</a></button></li>
-          <li><button onclick="showPage('contact')">Stuur een bericht</button></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 BoeteTerug.nl, Alle rechten voorbehouden</span>
+      <span></span>
       <div class="footer-legal">
         <button onclick="showPage('av')">Algemene voorwaarden</button>
         <button onclick="showPage('privacy')">Privacybeleid</button>
