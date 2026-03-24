@@ -549,9 +549,9 @@
   <!-- STAP 1: FOTO -->
   <div id="step1" class="step active">
     <div class="card-header">
-      <div class="step-label">Stap 1 van 5</div>
-      <div class="card-title">Foto van uw boete</div>
-      <div class="card-subtitle">Maak een foto of upload een scan van de boete die u heeft ontvangen.</div>
+      <div class="step-label">Stap 1 van 4</div>
+      <div class="card-title">Maak een foto van je boete</div>
+      <div class="card-subtitle">Dat is alles wat je hoeft te doen. Wij regelen de rest.</div>
     </div>
     <div class="card-body">
       <div class="photo-zone" id="photoZone">
@@ -576,28 +576,28 @@
     </div>
     <div class="card-footer">
       <div></div>
-      <button class="btn btn-primary" onclick="nextStep(1)">Volgende →</button>
+      <button class="btn btn-primary" onclick="nextStep(1)">Volgende — bijna klaar →</button>
     </div>
   </div>
 
   <!-- STAP 2: PERSOONSGEGEVENS -->
   <div id="step2" class="step">
     <div class="card-header">
-      <div class="step-label">Stap 2 van 5</div>
-      <div class="card-title">Uw persoonsgegevens</div>
-      <div class="card-subtitle">Alle velden met een * zijn verplicht.</div>
+      <div class="step-label">Stap 2 van 4</div>
+      <div class="card-title">Hoe kunnen wij je bereiken?</div>
+      <div class="card-subtitle">Vul je naam en e-mail in — meer hebben wij nu niet nodig.</div>
     </div>
     <div class="card-body">
       <div class="field-row">
         <div class="field">
           <label>Voornaam *</label>
           <input type="text" id="voornaam" placeholder="Jan" autocomplete="given-name">
-          <div class="field-error" id="err-voornaam">Vul uw voornaam in</div>
+          <div class="field-error" id="err-voornaam">Vul je voornaam in</div>
         </div>
         <div class="field">
           <label>Achternaam *</label>
           <input type="text" id="achternaam" placeholder="de Vries" autocomplete="family-name">
-          <div class="field-error" id="err-achternaam">Vul uw achternaam in</div>
+          <div class="field-error" id="err-achternaam">Vul je achternaam in</div>
         </div>
       </div>
       <div class="field">
@@ -606,32 +606,10 @@
         <div class="field-error" id="err-email">Vul een geldig e-mailadres in</div>
       </div>
       <div class="field">
-        <label>Telefoonnummer *</label>
+        <label>Telefoonnummer <span class="opt">(optioneel)</span></label>
         <input type="tel" id="telefoon" placeholder="06 12345678" autocomplete="tel">
-        <div class="field-error" id="err-telefoon">Vul uw telefoonnummer in</div>
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Straat + huisnummer *</label>
-          <input type="text" id="adres" placeholder="Keizersgracht 12" autocomplete="street-address">
-          <div class="field-error" id="err-adres">Vul uw adres in</div>
-        </div>
-        <div class="field">
-          <label>Postcode *</label>
-          <input type="text" id="postcode" placeholder="1234 AB" autocomplete="postal-code" maxlength="7">
-          <div class="field-error" id="err-postcode">Vul uw postcode in</div>
-        </div>
-      </div>
-      <div class="field">
-        <label>Woonplaats *</label>
-        <input type="text" id="woonplaats" placeholder="Amsterdam" autocomplete="address-level2">
-        <div class="field-error" id="err-woonplaats">Vul uw woonplaats in</div>
-      </div>
-      <div class="field">
-        <label>IBAN-rekeningnummer *</label>
-        <input type="text" id="iban" placeholder="NL91 ABNA 0417 1643 00" autocomplete="off" maxlength="34">
-        <div class="field-error" id="err-iban">Vul uw IBAN-rekeningnummer in</div>
-      </div>
+      <div class="info-box" style="margin-top:8px">🔒 Geen resultaat = €0. Je gegevens worden nooit gedeeld met derden.</div>
     </div>
     <div class="card-footer">
       <button class="btn btn-secondary" onclick="prevStep(2)">← Terug</button>
@@ -643,13 +621,13 @@
   <div id="step3" class="step">
     <div class="card-header">
       <div class="step-label">Stap 3 van 4</div>
-      <div class="card-title">Uw bezwaar</div>
-      <div class="card-subtitle">Geef aan waarom u het niet eens bent met de boete. Dit veld is optioneel.</div>
+      <div class="card-title">Weet je waarom de boete onterecht is?</div>
+      <div class="card-subtitle">Vertel het ons — maar het hoeft niet. Ook zonder toelichting kijken wij wat we kunnen doen.</div>
     </div>
     <div class="card-body">
       <div class="field">
         <label>Waarom bent u het niet eens met de boete? <span class="opt">(optioneel)</span></label>
-        <textarea id="bezwaar" placeholder="Beschrijf hier uw bezwaar. Bijvoorbeeld: het bord was niet zichtbaar, of ik had een geldige vergunning..."></textarea>
+        <textarea id="bezwaar" placeholder="Bijv: het bord was niet zichtbaar, ik stond er maar heel even, of mijn fiets was helemaal niet verwaarloosd..."></textarea>
       </div>
     </div>
     <div class="card-footer">
@@ -662,22 +640,22 @@
   <div id="step4" class="step">
     <div class="card-header">
       <div class="step-label">Stap 4 van 4</div>
-      <div class="card-title">Wij hebben alleen nog uw bevestiging nodig</div>
-      <div class="card-subtitle">Om voor u aan de slag te gaan hebben wij alleen nog maar uw akkoord nodig.</div>
+      <div class="card-title">Bijna klaar — geef je akkoord</div>
+      <div class="card-subtitle">Eén keer tekenen en wij gaan direct voor je aan de slag. Geen resultaat = €0.</div>
     </div>
     <div class="card-body">
       <div class="info-box">
-        BoeteTerug.nl gaat uitsluitend aan de slag nadat u onderstaande verklaringen hebt bevestigd en uw handtekening hebt geplaatst.
+        Wij gaan pas aan de slag als jij akkoord gaat. Geen verrassingen, geen verborgen kosten.
       </div>
 
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ga akkoord met de <a href="index.html#kosten" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug.nl en machtig BoeteTerug.nl om namens mij bezwaar te maken, verweer te voeren en informatie op te vragen bij overheidsinstanties. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.</span>
+        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug.nl en machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.</span>
       </label>
 
       <label class="checkbox-field" id="cb2Wrap">
         <input type="checkbox" id="cb2" onchange="checkboxChanged()">
-        <span class="cb-label">Ik begrijp dat BoeteTerug.nl gratis werkt. Als wij winnen, betaalt de overheid een vergoeding voor onze juridische hulp. Die vergoeding ontvang ik op mijn eigen rekening en ik maak dit bedrag door aan BoeteTerug.nl. Het boetebedrag zelf mag ik houden. <a href="index.html#kosten" style="color:var(--navy);font-weight:600;text-decoration:underline;">Meer uitleg over de kosten →</a></span>
+        <span class="cb-label">Ik snap hoe de kosten werken: als wij winnen, ontvang ik de vergoeding voor juridische hulp op mijn eigen rekening en maak ik dit door aan BoeteTerug. Het boetebedrag zelf mag ik houden. Verlies je? Dan betaal je niks. <a href="index.html#kosten" style="color:var(--navy);font-weight:600;text-decoration:underline;">Meer uitleg →</a></span>
       </label>
 
       <div class="field" style="margin-top:22px;">
@@ -689,14 +667,14 @@
           </div>
           <canvas id="sigPad"></canvas>
         </div>
-        <div class="sig-hint">Gebruik uw vinger op touchscreen, of de muis op een computer.</div>
-        <div class="field-error" id="err-sig">Zet uw handtekening om te bevestigen</div>
+        <div class="sig-hint">Teken met je vinger (telefoon) of muis.</div>
+        <div class="field-error" id="err-sig">Zet je handtekening om te bevestigen</div>
       </div>
     </div>
     <div class="card-footer">
       <button class="btn btn-secondary" onclick="prevStep(4)">← Terug</button>
       <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
-        ✓ Versturen &amp; bevestigen
+        ✓ Ja, regel het voor mij — gratis
       </button>
     </div>
   </div>
@@ -704,9 +682,9 @@
   <!-- SUCCESS -->
   <div id="successScreen">
     <div class="success-icon">✓</div>
-    <div class="success-title">Uw aanvraag is ontvangen!</div>
+    <div class="success-title">Gelukt! Wij gaan aan de slag.</div>
     <div class="success-text">
-      Bedankt. Wij hebben uw boete en gegevens goed ontvangen. U ontvangt binnen 1 werkdag een bevestiging per e-mail. BoeteTerug.nl gaat direct voor u aan de slag.
+      Je boete is bij ons in goede handen. Je ontvangt binnen 1 werkdag een bevestiging per e-mail. Geen resultaat = €0.
     </div>
   </div>
 
@@ -790,7 +768,7 @@
       }
     }
     if (step === 2) {
-      const fields = ['voornaam','achternaam','email','telefoon','adres','postcode','woonplaats','iban'];
+      const fields = ['voornaam','achternaam','email'];
       fields.forEach(f => {
         const val = document.getElementById(f).value.trim();
         let bad = val === '';
@@ -930,11 +908,11 @@
     fd.append('voornaam', document.getElementById('voornaam').value.trim());
     fd.append('achternaam', document.getElementById('achternaam').value.trim());
     fd.append('email', document.getElementById('email').value.trim());
-    fd.append('telefoon', document.getElementById('telefoon').value.trim());
-    fd.append('adres', document.getElementById('adres').value.trim());
-    fd.append('postcode', document.getElementById('postcode').value.trim());
-    fd.append('woonplaats', document.getElementById('woonplaats').value.trim());
-    fd.append('iban', document.getElementById('iban').value.trim());
+    if (document.getElementById('telefoon').value.trim()) fd.append('telefoon', document.getElementById('telefoon').value.trim());
+    
+    
+    
+    
     fd.append('bezwaar', document.getElementById('bezwaar').value.trim());
     fd.append('timestamp', new Date().toLocaleString('nl-NL'));
 
