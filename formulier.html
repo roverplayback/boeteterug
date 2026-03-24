@@ -558,16 +558,15 @@
     </div>
     <div class="card-body">
       <div class="photo-zone" id="photoZone">
-        <div style="display:flex;gap:20px;justify-content:center;align-items:flex-end;margin-bottom:16px">
+        <div id="iconRow" style="display:flex;gap:20px;justify-content:center;align-items:flex-end;margin-bottom:16px">
           <img src="assets/images/mulderboete.png" alt="Mulderboete" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
           <img src="assets/images/parkeerboete.png" alt="Parkeerboete" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
           <img src="assets/images/fietsboete.png" alt="Fietsdepot" style="width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(15,31,61,0.15))">
         </div>
-        <h3>Sleep je boete(s) hierheen</h3>
-        <p>Je kunt meerdere bestanden tegelijk uploaden. Of gebruik de knoppen hieronder.</p>
-        <div id="photoPreview" class="photo-preview">
-          <img id="previewImg" src="" alt="Preview">
-          <div class="file-name" id="fileName"></div>
+        <h3 id="photoZoneTitle">Sleep je boete(s) hierheen</h3>
+        <p id="photoZoneSub">Je kunt meerdere bestanden tegelijk uploaden. Of gebruik de knoppen hieronder.</p>
+        <div id="photoPreview" class="photo-preview" style="display:none">
+          <div id="fileName" style="font-size:14px;color:var(--success);font-weight:500;margin-top:4px"></div>
         </div>
       </div>
       <div class="photo-btn-row">
@@ -580,6 +579,11 @@
       </div>
       <input type="file" id="cameraInput" class="file-input-camera" accept="image/*" capture="environment">
       <input type="file" id="fileInput" class="file-input-camera" accept="image/*,application/pdf" multiple>
+      <div class="field" style="margin-top:18px">
+        <label>CJIB-nummer, aanslagnummer of besluitnummer <span class="opt">(optioneel)</span></label>
+        <input type="text" id="boeteNummer" placeholder="Bijv. 1234 5678 9012 3456" autocomplete="off">
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Staat op je boete of beschikking. Meerdere nummers? Scheid ze met een komma.</div>
+      </div>
     </div>
     <div class="card-footer">
       <div></div>
@@ -659,20 +663,19 @@
         <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Jij hoeft niets te doen</div>
         <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Bij winst krijg jij het boetebedrag terug</div>
         <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> De overheid vergoedt onze kosten</div>
-        <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text)"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span> Geen resultaat = geen kosten</div>
       </div>
 
       <!-- Checkbox 1: kort + uitklap -->
       <label class="checkbox-field" id="cb1Wrap">
         <input type="checkbox" id="cb1" onchange="checkboxChanged()">
-        <span class="cb-label">Ik ga akkoord en machtig BoeteTerug om mijn boete aan te vechten en mijn zaak te behandelen.</span>
+        <span class="cb-label">Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> en machtig BoeteTerug om namens mij bezwaar te maken, (hoger) beroep in te stellen en mijn zaak te behandelen.</span>
       </label>
       <div style="margin:-6px 0 18px 4px">
         <button type="button" onclick="toggleMachtiging()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px">
           <span style="font-size:11px">🔍</span> Bekijk volledige machtiging
         </button>
         <div id="machtigingText" style="display:none;margin-top:8px;padding:12px 14px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.65">
-          Ik ga akkoord met de <a href="index.html#av" style="color:var(--navy);font-weight:600;text-decoration:underline;">algemene voorwaarden</a> van BoeteTerug en machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
+          Ik machtig Gerben de Vries en Jelte de Vries, handelend onder de naam BoeteTerug, en hun medewerkers, om namens mij bezwaar te maken, verweer te voeren, beroep (en hoger beroep) in te stellen, ingebrekestellingen te sturen, verzoeken tot schadevergoeding en proceskostenvergoeding in te dienen, en informatie op te vragen of te verstrekken aan overheidsinstanties en gerechtelijke instanties (waaronder op grond van de Woo, AVG, Wjsg en Wpg). Deze machtiging heeft betrekking op het CJIB-nummer, aanslagnummer of besluitnummer: <strong id="machtigingNummer" style="color:var(--navy)">—</strong>. Deze machtiging geldt uitsluitend voor de behandeling van mijn zaak.
         </div>
       </div>
 
@@ -735,6 +738,15 @@
   function toggleMachtiging() {
     const el = document.getElementById('machtigingText');
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    updateMachtigingNummer();
+  }
+
+  function updateMachtigingNummer() {
+    const nr = document.getElementById('boeteNummer');
+    const span = document.getElementById('machtigingNummer');
+    if (nr && span) {
+      span.textContent = nr.value.trim() || '—';
+    }
   }
 
   // ====================================================
@@ -827,40 +839,18 @@
     window.uploadedFiles = Array.from(files);
     const zone = document.getElementById('photoZone');
     zone.classList.add('has-file');
-    zone.querySelector('h3').textContent = window.uploadedFiles.length === 1
-      ? 'Bestand geselecteerd ✓'
-      : `${window.uploadedFiles.length} bestanden geselecteerd ✓`;
     zone.style.border = '';
 
-    // Show thumbnails
+    // Hide icons, show file names only
+    document.getElementById('iconRow').style.display = 'none';
+    const countText = window.uploadedFiles.length === 1
+      ? '1 bestand geselecteerd ✓'
+      : `${window.uploadedFiles.length} bestanden geselecteerd ✓`;
+    document.getElementById('photoZoneTitle').textContent = countText;
+    document.getElementById('photoZoneSub').style.display = 'none';
+
     const preview = document.getElementById('photoPreview');
     preview.style.display = 'block';
-    // Remove old thumbs
-    const existing = preview.querySelectorAll('.thumb-row');
-    existing.forEach(el => el.remove());
-    const thumbRow = document.createElement('div');
-    thumbRow.className = 'thumb-row';
-    thumbRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px';
-    window.uploadedFiles.forEach(file => {
-      const wrap = document.createElement('div');
-      wrap.style.cssText = 'position:relative';
-      if (file.type.startsWith('image/')) {
-        const img = document.createElement('img');
-        img.style.cssText = 'width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--border)';
-        const reader = new FileReader();
-        reader.onload = e => { img.src = e.target.result; };
-        reader.readAsDataURL(file);
-        wrap.appendChild(img);
-      } else {
-        const box = document.createElement('div');
-        box.style.cssText = 'width:72px;height:72px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:4px;background:var(--bg)';
-        box.textContent = file.name.slice(-12);
-        wrap.appendChild(box);
-      }
-      thumbRow.appendChild(wrap);
-    });
-    document.getElementById('previewImg').style.display = 'none';
-    preview.appendChild(thumbRow);
     document.getElementById('fileName').textContent = window.uploadedFiles.map(f => f.name).join(', ');
   }
 
@@ -978,6 +968,7 @@
         })
       ));
       const bestandsnamen = boeteFiles.map(f => f.name).join(', ') || 'onbekend';
+      const boeteNummer = document.getElementById('boeteNummer').value.trim();
 
       const payload = {
         voornaam:    document.getElementById('voornaam').value.trim(),
@@ -986,6 +977,7 @@
         telefoon:    document.getElementById('telefoon').value.trim(),
         bezwaar:     document.getElementById('bezwaar').value.trim(),
         bestandsnamen,
+        boeteNummer,
         boeteFiles:  boeteData,
         sigBase64,
         timestamp:   new Date().toISOString(),
