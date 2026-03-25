@@ -727,7 +727,7 @@
       <label class="checkbox-field" id="cb2Wrap">
         <input type="checkbox" id="cb2" onchange="checkboxChanged(); closeMachtiging();">
         <span class="cb-label">
-          Ik begrijp dat bij winst de overheid een vergoeding voor juridische kosten betaalt aan BoeteTerug en dat ik het boetebedrag zelf ontvang.
+          Ik begrijp dat de overheid de juridische kosten aan BoeteTerug betaalt. Als deze op mijn rekening worden gestort, draag ik deze over. Het boetebedrag dat ik terugkrijg, is voor mij.
           <a href="#" target="_blank" onclick="var w=window.open('index.html','_blank');w.addEventListener('load',function(){w.showPage&&w.showPage('kosten');});return false;" style="display:inline-block;margin-top:4px;color:var(--muted);font-size:12px;text-decoration:underline">Meer uitleg →</a>
         </span>
       </label>
@@ -853,7 +853,7 @@
   let currentStep = 1;
   const totalSteps = 5;
 
-  function showStep(n) {
+  function showStep(n, pushHistory) {
     for (let i = 1; i <= totalSteps; i++) {
       document.getElementById('step' + i).classList.remove('active');
     }
@@ -861,7 +861,26 @@
     currentStep = n;
     updateProgress(n);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Push state so browser back button works
+    if (pushHistory !== false) {
+      history.pushState({ step: n }, '', '?stap=' + n);
+    }
   }
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', function(e) {
+    if (e.state && e.state.step) {
+      showStep(e.state.step, false);
+      if (e.state.step === 5) initSignaturePad();
+    } else {
+      showStep(1, false);
+    }
+  });
+
+  // Set initial history state on load
+  window.addEventListener('DOMContentLoaded', function() {
+    history.replaceState({ step: currentStep }, '', '?stap=' + currentStep);
+  });
 
   function updateProgress(n) {
     const dots = document.querySelectorAll('.step-dot');
