@@ -72,10 +72,11 @@ h3{font-size:clamp(17px,2.5vw,22px);font-weight:600}
 .hero .lead{color:rgba(255,255,255,.65);margin:0 auto 36px}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
 .hero-note{margin-top:20px;font-size:13px;color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;gap:6px}
-.hero-stats{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:8px;overflow:hidden;max-width:520px;margin-left:auto;margin-right:auto}
-.stat{background:rgba(255,255,255,.04);padding:20px 24px;text-align:center}
-.stat-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--accent)}
-.stat-label{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px}
+.hero-stats{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:8px;overflow:hidden;max-width:480px;margin-left:auto;margin-right:auto}
+.stat{background:rgba(255,255,255,.04);padding:18px 12px;text-align:center;cursor:pointer;transition:background .2s}
+.stat:hover{background:rgba(255,255,255,.08)}
+.stat-icon{width:48px;height:48px;object-fit:contain;display:block;margin:0 auto 8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))}
+.stat-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.75);margin-top:2px;letter-spacing:.2px}
 
 /* STEPS STRIP */
 .steps-strip{background:var(--white);border-bottom:1px solid var(--border)}
@@ -191,7 +192,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
   .steps-grid{grid-template-columns:1fr}.step-item{border-right:none}
   .types-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr;gap:28px}
-  .hero-stats{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr;max-width:280px}
   .legal-content{padding:28px 20px}.contact-card{padding:24px 20px}
   .hiw-step{flex-direction:column;gap:14px}
 }
@@ -236,9 +237,18 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
       </div>
       <div class="hero-note">🔒 Je gegevens worden veilig en vertrouwelijk behandeld</div>
       <div class="hero-stats">
-        <div class="stat"><div class="stat-num">€0</div><div class="stat-label">geen kosten bij winst of verlies</div></div>
-        <div class="stat"><div class="stat-num">0 moeite</div><div class="stat-label">wij doen het contact</div></div>
-        <div class="stat"><div class="stat-num">1 op de 3</div><div class="stat-label">boetes is onterecht</div></div>
+        <div class="stat" onclick="window.location.href='formulier.html?type=mulder'">
+          <img class="stat-icon" src="assets/images/mulderboete.png" alt="Verkeersboete">
+          <div class="stat-label">Verkeersboete</div>
+        </div>
+        <div class="stat" onclick="window.location.href='formulier.html?type=parkeer'">
+          <img class="stat-icon" src="assets/images/parkeerboete.png" alt="Parkeerboete">
+          <div class="stat-label">Parkeerboete</div>
+        </div>
+        <div class="stat" onclick="window.location.href='formulier.html?type=fiets'">
+          <img class="stat-icon" src="assets/images/fietsboete.png" alt="Fietsdepot">
+          <div class="stat-label">Fietsdepot</div>
+        </div>
       </div>
     </div>
   </section>
@@ -440,7 +450,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
       <div class="faq-list">
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ik heb geld ontvangen op mijn rekening, wat nu? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Als wij winnen, maakt de overheid een vergoeding voor onze juridische hulp over op jouw rekening. Dat bedrag stuur je door aan BoeteTerug. Het boetebedrag zelf mag je houden. <a href="#" onclick="showPage('kosten')" style="color:var(--navy);font-weight:600">Meer uitleg →</a></div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wat als mijn bezwaar wordt afgewezen? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Dan betaal je niks. Geen factuur, geen kosten. We kijken of we in beroep kunnen, ook dat is gratis.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Moet ik de boete betalen terwijl het bezwaar loopt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Bij Mulderboetes betaal je in de bezwaarfase de boete niet. Krijg je gelijk? Dan houd je je geld. Krijg je ongelijk en maken wij bezwaar? Betaal de boeten dan voorlopig wel. Als je in beroep gelijk krijgt, krijg je je boete terug.  </div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Moet ik de boete betalen terwijl het bezwaar loopt? <span class="arrow">+</span></button><div class="faq-a"><div class="faq-a-inner">Tijdens bezwaar hoef je meestal nog niet te betalen.<br><br>Wordt je bezwaar afgewezen? Dan moet je de boete betalen, ook als je in beroep gaat. Krijg je later gelijk, dan ontvang je het bedrag terug.</div></div></div>
       </div>
 
       <div class="faq-cat">Procedure</div>
@@ -490,15 +500,104 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
 
 <!-- ALGEMENE VOORWAARDEN -->
 <div id="page-av" class="page">
-  <section style="background:var(--navy);padding:40px 24px;text-align:center"><div class="container"><h1 style="color:#fff;font-size:28px">Algemene Voorwaarden</h1><p style="color:rgba(255,255,255,.6);margin-top:8px;font-size:14px">Laatst bijgewerkt: januari 2025</p></div></section>
+  <section style="background:var(--navy);padding:40px 24px;text-align:center"><div class="container"><h1 style="color:#fff;font-size:28px">Algemene Voorwaarden</h1><p style="color:rgba(255,255,255,.6);margin-top:8px;font-size:14px">BoeteTerug</p></div></section>
   <section class="section"><div class="container"><div class="legal-content">
-    <h2>1. Identiteit</h2><p>BoeteTerug.nl is een dienst gericht op het gratis indienen van bezwaar tegen verkeers- en parkeerboetes namens haar cliënten.</p>
-    <h2>2. Toepasselijkheid</h2><p>Deze voorwaarden zijn van toepassing op alle overeenkomsten tussen BoeteTerug.nl en de cliënt. Door gebruik te maken van onze diensten ga je akkoord met deze voorwaarden.</p>
-    <h2>3. Dienstverlening</h2><p>BoeteTerug.nl biedt juridische bijstand bij het indienen van bezwaar tegen verkeers- en parkeerboetes. Wij analyseren de boete, stellen het bezwaarschrift op en dienen dit in bij de bevoegde instantie. Waar opportuun vertegenwoordigen wij je ook bij de kantonrechter.</p>
-    <h2>4. 100% gratis</h2><p>BoeteTerug.nl hanteert uitsluitend het 100% gratis-principe. Bij een niet-succesvolle procedure ben je niets verschuldigd. Bij een succesvolle uitkomst is de cliënt verplicht de proceskostenvergoeding van de overheid door te betalen aan BoeteTerug.nl, conform het Besluit proceskosten bestuursrecht.</p>
-    <h2>5. Verplichtingen cliënt</h2><ul><li>De cliënt verstrekt juiste en volledige informatie.</li><li>De cliënt machtigt BoeteTerug.nl om namens hem/haar bezwaar te maken.</li><li>De cliënt is verplicht een ontvangen proceskostenvergoeding door te betalen aan BoeteTerug.nl.</li><li>De cliënt betaalt de boete tijdig om afwijzing te voorkomen.</li></ul>
-    <h2>6. Aansprakelijkheid</h2><p>BoeteTerug.nl is niet aansprakelijk voor schade die voortvloeit uit het niet-slagen van een procedure. Wij doen alles wat redelijkerwijs in ons vermogen ligt, maar kunnen geen garantie bieden op uitkomst.</p>
-    <h2>7. Toepasselijk recht</h2><p>Op alle overeenkomsten is Nederlands recht van toepassing. Geschillen worden bij voorkeur in onderling overleg opgelost.</p>
+
+    <h2>Artikel 1 – Identiteit en definities</h2>
+    <p><strong>1.1</strong> BoeteTerug is een handelsnaam van een eenmanszaak, gedreven door de juristen Gerben de Vries en Jelte de Vries, hierna te noemen: "BoeteTerug".</p>
+    <p><strong>1.2</strong> Onder BoeteTerug wordt mede verstaan: de onderneming, haar eigenaar(s), medewerkers, hulppersonen en ingeschakelde derden.</p>
+    <p><strong>1.3</strong> Klant: iedere natuurlijke of rechtspersoon die met BoeteTerug een overeenkomst aangaat.</p>
+    <p><strong>1.4</strong> Overeenkomst: iedere overeenkomst tussen BoeteTerug en Klant, inclusief deze algemene voorwaarden en eventuele aanvullende afspraken.</p>
+    <p><strong>1.5</strong> Diensten: alle door BoeteTerug aangeboden of verrichte werkzaamheden, waaronder doch niet uitsluitend:</p>
+    <ul><li>juridische beoordeling van zaken;</li><li>het voeren van bezwaar-, (administratief) beroep-, hoger beroep- en cassatieprocedures;</li><li>het opstellen en indienen van (proces)stukken;</li><li>het verzenden van ingebrekestellingen;</li><li>het innen van proceskostenvergoedingen en dwangsommen;</li><li>het opvragen en verstrekken van informatie bij (semi-)overheidsinstanties.</li></ul>
+    <p><strong>1.6</strong> Proceskostenvergoeding: iedere vergoeding, dwangsom of andere financiële compensatie die door een overheidsinstantie wordt toegekend naar aanleiding van een procedure.</p>
+
+    <h2>Artikel 2 – Toepasselijkheid</h2>
+    <p><strong>2.1</strong> Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, rechtsverhoudingen en overeenkomsten tussen BoeteTerug en Klant.</p>
+    <p><strong>2.2</strong> Door het indienen van een zaak via de website of enig ander kanaal aanvaardt Klant deze algemene voorwaarden onvoorwaardelijk.</p>
+    <p><strong>2.3</strong> Eventuele algemene voorwaarden van Klant worden uitdrukkelijk van de hand gewezen.</p>
+    <p><strong>2.4</strong> Afwijkingen zijn uitsluitend geldig indien schriftelijk overeengekomen.</p>
+    <p><strong>2.5</strong> Indien enige bepaling nietig of vernietigbaar is, blijven de overige bepalingen volledig van kracht.</p>
+
+    <h2>Artikel 3 – Totstandkoming overeenkomst</h2>
+    <p><strong>3.1</strong> De overeenkomst komt tot stand op het moment dat Klant een zaak indient via de website, en BoeteTerug deze zaak (al dan niet impliciet) in behandeling neemt.</p>
+    <p><strong>3.2</strong> BoeteTerug is te allen tijde gerechtigd een opdracht zonder opgaaf van redenen te weigeren of te beëindigen.</p>
+
+    <h2>Artikel 4 – Uitvoering van de dienstverlening</h2>
+    <p><strong>4.1</strong> BoeteTerug verricht haar diensten naar beste inzicht en vermogen en met de zorg van een redelijk bekwaam en redelijk handelend jurist.</p>
+    <p><strong>4.2</strong> De dienstverlening betreft uitsluitend een inspanningsverplichting en uitdrukkelijk geen resultaatsverplichting.</p>
+    <p><strong>4.3</strong> BoeteTerug is volledig vrij in de beoordeling van de haalbaarheid van een zaak, de keuze van strategie en procesvoering, en het al dan niet instellen van rechtsmiddelen.</p>
+    <p><strong>4.4</strong> BoeteTerug is gerechtigd om derden (waaronder advocaten) in te schakelen en werkzaamheden geheel of gedeeltelijk uit te besteden.</p>
+    <p><strong>4.5</strong> BoeteTerug is niet verplicht te verschijnen bij hoorzittingen of zittingen, tenzij zij dit zelf noodzakelijk acht.</p>
+
+    <h2>Artikel 5 – Verplichtingen van de Klant</h2>
+    <p><strong>5.1</strong> Klant is verplicht alle relevante informatie volledig, juist en tijdig aan te leveren en op eerste verzoek van BoeteTerug te verstrekken.</p>
+    <p><strong>5.2</strong> Klant staat in voor de juistheid en volledigheid van alle verstrekte gegevens.</p>
+    <p><strong>5.3</strong> Klant blijft te allen tijde zelf verantwoordelijk voor het tijdig betalen van boetes of het stellen van zekerheid, en het bewaken van wettelijke termijnen.</p>
+    <p><strong>5.4</strong> Indien Klant informatie te laat aanlevert (waaronder minder dan 7 dagen vóór het verstrijken van een termijn), is BoeteTerug niet aansprakelijk voor eventuele gevolgen.</p>
+    <p><strong>5.5</strong> Klant zal geen derden inschakelen voor dezelfde zaak zonder voorafgaande schriftelijke toestemming van BoeteTerug.</p>
+
+    <h2>Artikel 6 – Machtiging</h2>
+    <p><strong>6.1</strong> Klant verleent BoeteTerug een onherroepelijke volmacht om namens hem/haar bezwaar, beroep en hoger beroep in te stellen, proceshandelingen te verrichten, ingebrekestellingen te verzenden, vergoedingen te innen, en informatie op te vragen en te verstrekken.</p>
+    <p><strong>6.2</strong> De machtiging omvat tevens handelingen op grond van onder andere de Algemene wet bestuursrecht, de Wet open overheid (Woo), de Algemene verordening gegevensbescherming (AVG), de Wet justitiële en strafvorderlijke gegevens (Wjsg) en de Wet politiegegevens (Wpg).</p>
+    <p><strong>6.3</strong> De machtiging strekt niet verder dan noodzakelijk voor de uitvoering van de overeenkomst.</p>
+
+    <h2>Artikel 7 – Vergoeding en betaling</h2>
+    <p><strong>7.1</strong> De dienstverlening geschiedt in beginsel op basis van no cure no pay.</p>
+    <p><strong>7.2</strong> Indien een proceskostenvergoeding, dwangsom of andere vergoeding wordt toegekend, komt deze volledig toe aan BoeteTerug. Klant draagt deze (voor zover mogelijk) bij voorbaat over aan BoeteTerug.</p>
+    <p><strong>7.3</strong> Voor zover cessie niet mogelijk is, verplicht Klant zich de vergoeding onverwijld en uiterlijk binnen 14 dagen na ontvangst aan BoeteTerug door te betalen.</p>
+    <p><strong>7.4</strong> Bij niet-tijdige betaling is Klant van rechtswege in verzuim, wettelijke rente verschuldigd, en gehouden alle incasso- en (buiten)gerechtelijke kosten te vergoeden.</p>
+    <p><strong>7.5</strong> BoeteTerug is gerechtigd vergoedingen rechtstreeks te laten uitbetalen op een door haar aangewezen rekening.</p>
+    <p><strong>7.6</strong> In afwijking van het voorgaande kan BoeteTerug aanvullende vergoedingen overeenkomen (bijvoorbeeld bij strafzaken).</p>
+
+    <h2>Artikel 8 – Ingebrekestelling en dwangsommen</h2>
+    <p><strong>8.1</strong> BoeteTerug is gerechtigd, doch niet verplicht, ingebrekestellingen te verzenden.</p>
+    <p><strong>8.2</strong> Eventueel verbeurde dwangsommen komen volledig toe aan BoeteTerug.</p>
+    <p><strong>8.3</strong> BoeteTerug garandeert niet dat ingebrekestellingen tijdig worden verzonden, dat deze worden ontvangen of geaccepteerd, of dat een dwangsom wordt toegekend.</p>
+
+    <h2>Artikel 9 – Herroeping</h2>
+    <p><strong>9.1</strong> Klant stemt uitdrukkelijk in met onmiddellijke aanvang van de dienstverlening.</p>
+    <p><strong>9.2</strong> Het herroepingsrecht wordt daarmee uitgesloten voor zover wettelijk toegestaan.</p>
+
+    <h2>Artikel 10 – Aansprakelijkheid</h2>
+    <p><strong>10.1</strong> Iedere aansprakelijkheid van BoeteTerug is beperkt tot het bedrag van de oorspronkelijke boete of aanslag (exclusief verhogingen).</p>
+    <p><strong>10.2</strong> BoeteTerug is nimmer aansprakelijk voor indirecte schade, gevolgschade, gemiste besparingen of inkomsten, of schade door beslissingen van overheidsinstanties.</p>
+    <p><strong>10.3</strong> BoeteTerug is niet aansprakelijk voor fouten van derden, technische storingen, of niet-tijdige indiening door omstandigheden buiten haar macht.</p>
+    <p><strong>10.4</strong> Iedere aanspraak vervalt indien deze niet binnen 2 maanden na ontstaan wordt gemeld en uiterlijk binnen 1 jaar wordt ingesteld.</p>
+
+    <h2>Artikel 11 – Digitale systemen</h2>
+    <p><strong>11.1</strong> BoeteTerug maakt gebruik van geautomatiseerde systemen voor intake en beoordeling.</p>
+    <p><strong>11.2</strong> Aan de uitkomsten hiervan kunnen geen rechten worden ontleend.</p>
+    <p><strong>11.3</strong> BoeteTerug is niet aansprakelijk voor storingen of onbeschikbaarheid van systemen.</p>
+
+    <h2>Artikel 12 – Tussentijdse beëindiging</h2>
+    <p><strong>12.1</strong> Indien Klant de overeenkomst tussentijds beëindigt, is Klant een vergoeding verschuldigd voor reeds verrichte werkzaamheden, tot maximaal de vergoeding die BoeteTerug had kunnen ontvangen.</p>
+    <p><strong>12.2</strong> Hetzelfde geldt indien Klant een derde inschakelt of zelf proceshandelingen verricht zonder overleg.</p>
+
+    <h2>Artikel 13 – Boetebeding</h2>
+    <p><strong>13.1</strong> Bij schending van verplichtingen door Klant is een direct opeisbare boete verschuldigd van €50 per overtreding.</p>
+    <p><strong>13.2</strong> Dit laat het recht op aanvullende schadevergoeding onverlet.</p>
+
+    <h2>Artikel 14 – Vrijwaring</h2>
+    <p><strong>14.1</strong> Klant vrijwaart BoeteTerug volledig voor alle aanspraken van derden die voortvloeien uit het gebruik van de diensten, onjuiste of onvolledige informatie, of schending van wet- en regelgeving door Klant.</p>
+
+    <h2>Artikel 15 – Persoonsgegevens</h2>
+    <p><strong>15.1</strong> BoeteTerug verwerkt persoonsgegevens conform de geldende wetgeving.</p>
+    <p><strong>15.2</strong> Gegevens worden uitsluitend gebruikt voor uitvoering van de overeenkomst.</p>
+    <p><strong>15.3</strong> Gegevens kunnen worden gedeeld met derden voor zover noodzakelijk.</p>
+
+    <h2>Artikel 16 – Intellectuele eigendom</h2>
+    <p><strong>16.1</strong> Alle intellectuele eigendomsrechten berusten bij BoeteTerug.</p>
+    <p><strong>16.2</strong> Gebruik zonder voorafgaande schriftelijke toestemming is verboden.</p>
+
+    <h2>Artikel 17 – Wijzigingen</h2>
+    <p><strong>17.1</strong> BoeteTerug is gerechtigd deze voorwaarden eenzijdig te wijzigen.</p>
+    <p><strong>17.2</strong> Gewijzigde voorwaarden worden aan Klant medegedeeld en treden daarna in werking.</p>
+
+    <h2>Artikel 18 – Toepasselijk recht en forumkeuze</h2>
+    <p><strong>18.1</strong> Op alle rechtsverhoudingen is uitsluitend Nederlands recht van toepassing.</p>
+    <p><strong>18.2</strong> Geschillen worden uitsluitend voorgelegd aan de bevoegde rechter in Nederland.</p>
+
   </div></div></section>
 </div>
 
