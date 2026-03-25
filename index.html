@@ -579,3 +579,46 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:48px 24px 28px}
     </div>
     <div class="footer-bottom">
       <span></span>
+      <div class="footer-legal">
+        <button onclick="showPage('av')">Algemene voorwaarden</button>
+        <button onclick="showPage('privacy')">Privacybeleid</button>
+        <button onclick="showPage('kosten')">Kostenbeleid</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const p = document.getElementById('page-' + id);
+  if (p) p.classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  const nb = document.getElementById('nav-' + id);
+  if (nb) nb.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const m = document.getElementById('navMobile');
+  if (m) m.style.display = 'none';
+}
+
+function toggleMobile() {
+  const m = document.getElementById('navMobile');
+  m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-a').style.maxHeight = null;
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    const a = item.querySelector('.faq-a');
+    a.style.maxHeight = a.scrollHeight + 'px';
+  }
+}
+</script>
+</body>
+</html>
