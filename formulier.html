@@ -779,15 +779,6 @@
   // ====================================================
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyF32RM8oWcJUufWrfucuMi6aIKMAD5Q_kuuOiQDWm25pbUR8OV4fRTFzgYTLVptSEZrg/exec';
 
-  // Pre-select type from URL param (e.g. formulier.html?type=fiets)
-  (function() {
-    const params = new URLSearchParams(window.location.search);
-    const t = params.get('type');
-    if (t && ['mulder','parkeer','fiets'].includes(t)) {
-      selectBoeteType(t);
-    }
-  })();
-
   function toggleMachtiging() {
     const el = document.getElementById('machtigingText');
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
@@ -863,7 +854,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Push state so browser back button works
     if (pushHistory !== false) {
-      history.pushState({ step: n }, '', '?stap=' + n);
+      history.pushState({ step: n }, '');
     }
   }
 
@@ -879,7 +870,15 @@
 
   // Set initial history state on load
   window.addEventListener('DOMContentLoaded', function() {
-    history.replaceState({ step: currentStep }, '', '?stap=' + currentStep);
+    // Pre-select type from URL param (e.g. formulier.html?type=fiets)
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('type');
+    if (t && ['mulder','parkeer','fiets'].includes(t)) {
+      selectBoeteType(t);
+      // selectBoeteType calls showStep(2) which pushes state - set initial correctly
+    } else {
+      history.replaceState({ step: 1 }, '', window.location.pathname);
+    }
   });
 
   function updateProgress(n) {
